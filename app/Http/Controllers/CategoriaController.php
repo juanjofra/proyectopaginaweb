@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CategoriaController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource.sdasdasasasdssadsa
      *
      * @return \Illuminate\Http\Response
      */
@@ -17,6 +17,7 @@ class CategoriaController extends Controller
         $categorias = Categoria::all();
         
         return view('Categoria.index', compact('categorias'));
+        
     }
 
     /**
