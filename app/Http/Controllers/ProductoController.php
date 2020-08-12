@@ -2,82 +2,94 @@
 
 namespace App\Http\Controllers;
 
+use App\Categoria;
 use App\Producto;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('Producto.index');
+        $productos =  Producto::paginate(10);
+        return view('Producto.index', compact('productos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $categorias = Categoria::get(['id', 'nombre']);
+        return view('Producto.create', compact('categorias'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $validatedData = $request->validate([
+            'select_categoria' => 'required',
+            'titulo' => 'required|min:2',
+            'nombre' => 'required|min:2',
+            'descripcion' => 'required',
+            'imagen' => 'required|image',
+        ]);
+
+        $ruta_imagen = $request['imagen']->store('imagen-productos', 'public');
+
+        $producto = new Producto;
+        $producto->categoria_id = $request->select_categoria;
+        $producto->titulo = $request->titulo;
+        $producto->nombre = $request->nombre;
+        $producto->descripcion = $request->descripcion;
+        $producto->imagen = $ruta_imagen;
+
+        $producto->save();
+
+        //return redirect()->action('ProductoController@index');
+        return redirect()->route('producto.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Producto  $producto
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show(Producto $producto)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Producto  $producto
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit(Producto $producto)
     {
-        //
+        $categorias = Categoria::get(['id', 'nombre']);
+        return view('Producto.edit', compact('producto', 'categorias'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Producto  $producto
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, Producto $producto)
     {
-        //
+        //dd($request->all());
+        $validatedData = $request->validate([
+            'select_categoria' => 'required',
+            'titulo' => 'required|min:2',
+            'nombre' => 'required|min:2',
+            'descripcion' => 'required',
+        ]);
+
+       
+        $producto->categoria_id = $request->select_categoria;
+        $producto->titulo = $request->titulo;
+        $producto->nombre = $request->nombre;
+        $producto->descripcion = $request->descripcion;
+
+        if(request('imagen')){
+            $ruta_imagen = $request['imagen']->store('imagen-productos', 'public');
+            $producto->imagen = $ruta_imagen;
+        }
+       
+
+        $producto->save();
+
+        //return redirect()->action('ProductoController@index');
+        return redirect()->route('producto.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Producto  $producto
-     * @return \Illuminate\Http\Response
-     */
+  
     public function destroy(Producto $producto)
     {
         //

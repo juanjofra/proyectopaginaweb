@@ -13,11 +13,16 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;531;900&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/da8e6b6767.js" crossorigin="anonymous"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    @yield('styles')
+
+    
 </head>
 <body class="container.fluid">
     <div id="app">
@@ -72,26 +77,16 @@
             </div>
         </nav>
 
-        <div class="row m-0  mt-1">
-        <div class="col-2 p-0">
-                <div class="list-group">
-                    <a href="{{ route('home') }}" class="list-group-item list-group-item-action {{ request()->is('home') ? 'active' : '' }}">Inicio</a>
-                    <a href="{{ route('categoria.index') }}" class="list-group-item list-group-item-action {{ request()->is('categoria') ? 'active' : '' }}">Categorias</a>
-                    <a href="{{ route('producto.index') }}" class="list-group-item list-group-item-action {{ request()->is('producto') ? 'active' : '' }}">Productos</a>
-                    <a href="#" class="list-group-item list-group-item-action">Clientes</a>
-                    <a href="#" class="list-group-item list-group-item-action">Usuarios</a>
-                    <a href="#" class="list-group-item list-group-item-action">Pedidos</a>
-                </div>
+        <div class="m-0 mt-1">
+            
+                @yield('content')
+               
         </div>
-        <div class="col-10">
-            <div class="container">
-            @yield('content')
-        </div>
-            </div>
-     
-    </div>
             
         
     </div>
+
+    @yield('scripts')
+   
 </body>
 </html>

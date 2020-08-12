@@ -35,20 +35,13 @@
 	<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 </head>
 
-<body class="home layout-boxed section-bg"
-	style="background-image:url(https://via.placeholder.com/1920x4200/000000/ffffff)">
+<body class="home layout-boxed section-bg" >
 	<div class="site-wrapper">
 
 		<!-- =====================================
 		==== Start header -->
-		<header class="header drank">
-			<div class="topbar">
-				<div class="container top-bar">
-					<div class="top-bar__left">
-						Bienvenido <a href="#">Games</a>
-					</div>
-				</div>
-			</div>
+		<header class="header drank ">
+
 
 			<div class="header_container" style="background:url(assets/images/bg_header.jpg) repeat">
 

@@ -18,8 +18,9 @@ class CreateProductosTable extends Migration
             $table->string('titulo');
             $table->string('nombre');
             $table->text('descripcion');
-            $table->integer('precio_compra');
-            $table->integer('precio_venta');
+            $table->integer('precio_compra')->nullable();
+            $table->integer('precio_venta')->nullable();
+            $table->string('imagen')->nullable();
             $table->foreignId('categoria_id')->index('id')->on('categorias');
 
             $table->timestamps();

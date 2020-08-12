@@ -25,8 +25,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/categoria', 'CategoriaController@index')->name('categoria.index');
 Route::get('/categoria/create', 'CategoriaController@create')->name('categoria.create');
 Route::post('/categoria/store', 'CategoriaController@store')->name('categoria.store');
-Route::delete('/categoria/{categoria}/destroy', 'CategoriaController@destroy')->name('categoria.destroy');
+Route::post('/categoria/{categoria}/desactivar', 'CategoriaController@desactivar')->name('categoria.desactivar');
+Route::post('/categoria/{categoria}/activar', 'CategoriaController@activar')->name('categoria.activar');
+Route::get('/categoria/{categoria}/edit', 'CategoriaController@edit')->name('categoria.edit');
+Route::put('/categoria/{categoria}/update', 'CategoriaController@update')->name('categoria.update');
 
 
 //Rutas Productos
 Route::get('/producto', 'ProductoController@index')->name('producto.index');
+Route::get('/producto/create', 'ProductoController@create')->name('producto.create');
+Route::post('/producto/store', 'ProductoController@store')->name('producto.store');
+
+Route::get('/producto/{producto}/edit', 'ProductoController@edit')->name('producto.edit');
+Route::put('/producto/{producto}', 'ProductoController@update')->name('producto.update');
