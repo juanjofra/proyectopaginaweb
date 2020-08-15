@@ -15,6 +15,16 @@
   justify-content: center;
 }
 
+.preview_imagen_modal {
+  width: 230px;
+  height: 120px;
+  margin: 0px auto;
+  border-radius: 5px black;
+  background-color: #eeeeee;
+  align-items: center;
+  justify-content: center;
+}
+
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors

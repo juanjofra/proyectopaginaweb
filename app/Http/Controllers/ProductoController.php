@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Categoria;
 use App\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductoController extends Controller
 {
@@ -16,7 +17,7 @@ class ProductoController extends Controller
 
     public function create()
     {
-        $categorias = Categoria::get(['id', 'nombre']);
+        $categorias = Categoria::where('activo', 1)->get(['id', 'nombre']);
         return view('Producto.create', compact('categorias'));
     }
 
@@ -32,13 +33,15 @@ class ProductoController extends Controller
             'imagen' => 'required|image',
         ]);
 
-        $ruta_imagen = $request['imagen']->store('imagen-productos', 'public');
+        
 
         $producto = new Producto;
         $producto->categoria_id = $request->select_categoria;
         $producto->titulo = $request->titulo;
         $producto->nombre = $request->nombre;
         $producto->descripcion = $request->descripcion;
+
+        $ruta_imagen = $request['imagen']->store('imagen-productos/'.$request->nombre, 'public');
         $producto->imagen = $ruta_imagen;
 
         $producto->save();
@@ -56,7 +59,7 @@ class ProductoController extends Controller
    
     public function edit(Producto $producto)
     {
-        $categorias = Categoria::get(['id', 'nombre']);
+        $categorias = Categoria::where('activo', 1)->get(['id', 'nombre']);
         return view('Producto.edit', compact('producto', 'categorias'));
     }
 
@@ -74,11 +77,24 @@ class ProductoController extends Controller
        
         $producto->categoria_id = $request->select_categoria;
         $producto->titulo = $request->titulo;
-        $producto->nombre = $request->nombre;
+        
         $producto->descripcion = $request->descripcion;
 
+         if(request('nombre')){
+            Storage::deleteDirectory($producto->nombre);
+            //  $ruta_imagen_old = $producto->imagen;
+            //  $ruta_imagen = str_replace($producto->nombre, "$request->nombre", $producto->imagen);
+            //  //dd($ruta_imagen);
+            //  Storage::move('store/'.$ruta_imagen_old, 'store/'.$ruta_imagen);
+            //  $producto->imagen = $ruta_imagen;
+
+       
+         }
+
+        $producto->nombre = $request->nombre;
+
         if(request('imagen')){
-            $ruta_imagen = $request['imagen']->store('imagen-productos', 'public');
+            $ruta_imagen = $request['imagen']->store('imagen-productos/'.$request->nombre, 'public');
             $producto->imagen = $ruta_imagen;
         }
        
@@ -92,6 +108,9 @@ class ProductoController extends Controller
   
     public function destroy(Producto $producto)
     {
-        //
+        
+        //Storage::delete("imagen-productos/$producto->imagen");
+        $producto->delete();
+        return redirect()->route('producto.index');
     }
 }

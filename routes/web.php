@@ -35,6 +35,12 @@ Route::put('/categoria/{categoria}/update', 'CategoriaController@update')->name(
 Route::get('/producto', 'ProductoController@index')->name('producto.index');
 Route::get('/producto/create', 'ProductoController@create')->name('producto.create');
 Route::post('/producto/store', 'ProductoController@store')->name('producto.store');
-
 Route::get('/producto/{producto}/edit', 'ProductoController@edit')->name('producto.edit');
 Route::put('/producto/{producto}', 'ProductoController@update')->name('producto.update');
+Route::delete('/producto/{producto}', 'ProductoController@destroy')->name('producto.destroy');
+
+
+//Rutas Galeria producto
+Route::get('/galeria/{producto}', 'GaleriaController@index')->name('galeria.index');
+Route::post('/galeria/store', 'GaleriaController@store')->name('galeria.store');
+Route::delete('/galeria/{galeria}', 'GaleriaController@destroy')->name('galeria.destroy');
