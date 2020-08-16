@@ -16,6 +16,7 @@ class UsuarioSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Juan Jose',
             'email' => 'juanjo.fra@gmail.com',
+            'autorizacion' => true,
             'password' => Hash::make('12345678'),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),

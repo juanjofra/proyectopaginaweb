@@ -7,9 +7,6 @@
 <script>
 export default {
   props: ["productoId"],
-  mounted() {
-    console.log("producto id ", this.productoId);
-  },
   methods: {
     eliminarProducto() {
       this.$swal({
@@ -23,29 +20,37 @@ export default {
         cancelButtonText: 'No'
       }).then((result) => {
         if (result.value) {
-
           const params = {
             id: this.productoId
           }
-
           axios.post(`/producto/${this.productoId}`, {params, _method:'delete'}).then(respuesta => {
              
-            
+           
 
-             this.$swal({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Producto Eliminado',
-              showConfirmButton: false,
-              timer: 1000
+          if(respuesta.data === true){
+            this.$swal({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Producto Eliminado',
+            showConfirmButton: false,
+            timer: 1000
             });
-
+  
             //Eliminar del don la fila
-            //this.$el.parentNode.parentNode.parentNode.removeChild(this.$el.parentNode.parentNode);
-             setTimeout(() => {
-               location.reload();
-             }, 1000);
+            setTimeout(() => {
+              location.reload();
+            }, 1);
+            return;
+          }else{
+            this.$swal({
+              icon: 'error',
+              title: 'Error',
+              text: 'El producto tiene fotos de galeria, eliminelos antes de poder eliminar el producto'
+            });
+          }
 
+          }).catch(function (error) {
+            console.log(error);
           });
 
          

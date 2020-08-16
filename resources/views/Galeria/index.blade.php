@@ -26,7 +26,7 @@
               <div class="d-flex justify-content-around flex-wrap">
                 @foreach ( $producto->galeria as $galeria )
                 <div class="card m-1 border-0" style="width: 10rem;">
-                <img src="/storage/{{$galeria->imagen}}" class="card-img-top" alt="..." class="shadow">
+                <img src="/imagenes/galeria/{{$galeria->imagen}}" class="card-img-top" alt="..." class="shadow">
                 <div class="card-body text-center" style="background-color: #F8FAFC">
                   <form action="{{route('galeria.destroy', ['galeria' => $galeria->id])}}" method="POST" enctype="multipart/form-data">
                     @csrf

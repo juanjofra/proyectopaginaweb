@@ -12,8 +12,8 @@
           <a href="{{route('producto.create')}}" class="btn btn-primary">Nuevo Producto</a>
         </div>
         <div class="row">
-          <table class="table table-sm mt-4 shadow">
-            <thead class="thead-dark ">
+          <table class="table table-sm mt-4 shadow rounded">
+            <thead class="thead-dark rounded">
               <tr class="text-center">
                 <th scope="col">Titulo</th>
                 <th scope="col">Nombre</th>

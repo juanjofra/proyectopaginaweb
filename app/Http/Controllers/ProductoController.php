@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Categoria;
 use App\Producto;
+use App\Categoria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class ProductoController extends Controller
@@ -12,6 +13,7 @@ class ProductoController extends Controller
 
     public function __construct()
     {
+        $this->middleware('autorizacion');
         $this->middleware('auth');
     }
 
@@ -39,16 +41,18 @@ class ProductoController extends Controller
             'imagen' => 'required|image',
         ]);
 
-        
+        //Cargar imagen y guardar en la carpeta public
+        $file = $request->file('imagen');
+        $path = public_path(). '/imagenes/producto';
+        $fileName = uniqid(). $file->getClientOriginalName();
+        $file->move($path, $fileName);
 
         $producto = new Producto;
         $producto->categoria_id = $request->select_categoria;
         $producto->titulo = $request->titulo;
         $producto->nombre = $request->nombre;
         $producto->descripcion = $request->descripcion;
-
-        $ruta_imagen = $request['imagen']->store('imagen-productos/'.$request->nombre, 'public');
-        $producto->imagen = $ruta_imagen;
+        $producto->imagen = $fileName;
 
         $producto->save();
 
@@ -83,25 +87,22 @@ class ProductoController extends Controller
        
         $producto->categoria_id = $request->select_categoria;
         $producto->titulo = $request->titulo;
-        
         $producto->descripcion = $request->descripcion;
-
-         if(request('nombre')){
-            Storage::deleteDirectory($producto->nombre);
-            //  $ruta_imagen_old = $producto->imagen;
-            //  $ruta_imagen = str_replace($producto->nombre, "$request->nombre", $producto->imagen);
-            //  //dd($ruta_imagen);
-            //  Storage::move('store/'.$ruta_imagen_old, 'store/'.$ruta_imagen);
-            //  $producto->imagen = $ruta_imagen;
-
-       
-         }
-
         $producto->nombre = $request->nombre;
 
         if(request('imagen')){
-            $ruta_imagen = $request['imagen']->store('imagen-productos/'.$request->nombre, 'public');
-            $producto->imagen = $ruta_imagen;
+            //Eliminamos la imagen antes de guardar el nuevo editado
+            $full_path = public_path(). '/imagenes/producto/'. $producto->imagen;
+            File::delete($full_path);
+
+            //Cargar imagen y guardar en la carpeta public
+            $file = $request->file('imagen');
+            $path = public_path(). '/imagenes/producto';
+            $fileName = uniqid(). $file->getClientOriginalName();
+            $file->move($path, $fileName);
+
+            //Cargamos la nueva ruta en la bd
+            $producto->imagen = $fileName;
         }
        
 
@@ -114,9 +115,21 @@ class ProductoController extends Controller
   
     public function destroy(Producto $producto)
     {
+        $galeria = $producto->galeria;
         
-        //Storage::delete("imagen-productos/$producto->imagen");
-        $producto->delete();
-        return redirect()->route('producto.index');
+        //return count($galeria);
+        if(count($galeria) === 0){
+            //Eliminamos la imagen antes de guardar el nuevo editado
+            $full_path = public_path(). '/imagenes/producto/'. $producto->imagen;
+            File::delete($full_path);
+            $producto->delete();
+            return 'true';
+        }else{
+            $mensaje = 'El producto tiene fotos de galeria, eliminelos antes de poder eliminar el producto';
+            return $mensaje;
+        }
+
+       
+        //return redirect()->route('producto.index');
     }
 }

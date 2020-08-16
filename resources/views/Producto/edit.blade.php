@@ -67,7 +67,7 @@
                     </div>
   
                     <div class="form-group preview_div" id="preview">
-                    <img src="/storage/{{$producto->imagen}}" alt="" class="preview_imagen">
+                    <img src="/imagenes/producto/{{$producto->imagen}}" alt="" class="preview_imagen">
                     </div>
       
                     <div class="form-group">

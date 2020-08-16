@@ -9,7 +9,14 @@
     </div>
     <div class="col-10">
         <div class="container">
-            <p>Contenido</p>
+            <div class="card mt-3 shadow-sm">
+                <h5 class="card-header">
+                    <div class="col text-uppercase">Inicio</div>
+                </h5>
+                <div class="card-body d-flex justify-content-around flex-wrap ">
+                  
+                </div>
+              </div>
             </div>
         </div>
     </div>

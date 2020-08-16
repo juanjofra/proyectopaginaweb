@@ -1916,9 +1916,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["productoId"],
-  mounted: function mounted() {
-    console.log("producto id ", this.productoId);
-  },
   methods: {
     eliminarProducto: function eliminarProducto() {
       var _this = this;
@@ -1941,19 +1938,29 @@ __webpack_require__.r(__webpack_exports__);
             params: params,
             _method: 'delete'
           }).then(function (respuesta) {
-            _this.$swal({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Producto Eliminado',
-              showConfirmButton: false,
-              timer: 1000
-            }); //Eliminar del don la fila
-            //this.$el.parentNode.parentNode.parentNode.removeChild(this.$el.parentNode.parentNode);
+            if (respuesta.data === true) {
+              _this.$swal({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Producto Eliminado',
+                showConfirmButton: false,
+                timer: 1000
+              }); //Eliminar del don la fila
 
 
-            setTimeout(function () {
-              location.reload();
-            }, 1000);
+              setTimeout(function () {
+                location.reload();
+              }, 1);
+              return;
+            } else {
+              _this.$swal({
+                icon: 'error',
+                title: 'Error',
+                text: 'El producto tiene fotos de galeria, eliminelos antes de poder eliminar el producto'
+              });
+            }
+          })["catch"](function (error) {
+            console.log(error);
           });
         }
       });

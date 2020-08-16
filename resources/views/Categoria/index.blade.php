@@ -21,10 +21,7 @@
           </div>
         </h5>
         <div class="card-body d-flex justify-content-around flex-wrap ">
-         
-         
           @foreach ( $categorias as $categoria )
-      
           <div class="card shadow m-3" style="width: 18rem;">
             <div class="card-header">
               <h5 class="text-center">{{$categoria->nombre}}</h5>

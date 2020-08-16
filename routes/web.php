@@ -16,10 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Rutas Usuarios
+Route::get('/user', 'UserController@index')->name('user.index');
+Route::post('/user/{user}/denegar', 'UserController@denegar')->name('user.denegar');
+Route::post('/user/{user}/autorizar', 'UserController@autorizar')->name('user.autorizar');
 
 //Rutas Categorias
 Route::get('/categoria', 'CategoriaController@index')->name('categoria.index');

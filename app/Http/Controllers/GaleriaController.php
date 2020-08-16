@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Galeria;
 use App\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class GaleriaController extends Controller
@@ -40,11 +41,17 @@ class GaleriaController extends Controller
         ]);
 
         //dd($producto);
-        $ruta_imagen = $request['imagen']->store('imagen-galeria/', 'public');
+        // $ruta_imagen = $request['imagen']->store('imagen-galeria/', 'public');
+
+        //Cargar imagen y guardar en la carpeta public
+        $file = $request->file('imagen');
+        $path = public_path(). '/imagenes/galeria';
+        $fileName = uniqid(). $file->getClientOriginalName();
+        $file->move($path, $fileName);
 
         $galeria = new Galeria;
         $galeria->producto_id = $request->producto_id;
-        $galeria->imagen = $ruta_imagen;
+        $galeria->imagen = $fileName;
 
         $galeria->save();
 
@@ -97,10 +104,10 @@ class GaleriaController extends Controller
      */
     public function destroy(Galeria $galeria)
     {
-        //$url = Storage::url($galeria->imagen);
-        //dd($galeria->imagen);
-        $aux = Storage::delete($galeria->imagen);
-        //unlink($imagen_path);
+       //Eliminamos la imagen antes de guardar el nuevo editado
+        $full_path = public_path(). '/imagenes/galeria/'. $galeria->imagen;
+        File::delete($full_path);
+        $galeria->delete();
         return back();
     }
 }
