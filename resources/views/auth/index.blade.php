@@ -30,12 +30,12 @@
                   <td>@if($user->autorizacion) <span class="text-success text-uppercase">Autorizado</span>@else <span class="text-danger text-uppercase">Denegado</span> @endif</td>
                   <td class='text-center justify-content-center align-content-center'>
                     @if($user->autorizacion)
-                    <form action='{{ url("/user/$user->id/denegar")}}' method="POST">
+                    <form action="{{ route('user.denegar', ['user' => $user->id])}}" method="POST">
                       @csrf
                       <button type="submit" class="btn btn-danger"><i class="fas fa-toggle-off"></i></button>
                     </form>
                   @else
-                    <form action='{{ url("/user/$user->id/autorizar")}}' method="POST">
+                    <form action="{{ route('user.autorizar', ['user' => $user->id])}}" method="POST">
                       @csrf
                       <button type="submit" class="btn btn-primary"><i class="fas fa-toggle-on"></i></button>
                     </form>

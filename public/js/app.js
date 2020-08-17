@@ -1934,7 +1934,7 @@ __webpack_require__.r(__webpack_exports__);
           var params = {
             id: _this.productoId
           };
-          axios.post("/producto/".concat(_this.productoId), {
+          axios.post("/admin/producto/".concat(_this.productoId), {
             params: params,
             _method: 'delete'
           }).then(function (respuesta) {

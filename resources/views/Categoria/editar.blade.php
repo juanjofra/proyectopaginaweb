@@ -8,7 +8,7 @@
       <div class="card-body">
         <div class="row justify-content-center">
           <div class="col-5 ">
-            <form  action="/categoria/{{$categoria->id}}/update" method="POST">
+            <form  action="{{route("categoria.update", ['categoria' => $categoria->id])}}" method="POST">
               @csrf
               @method('PUT')
               <div class="form-group">

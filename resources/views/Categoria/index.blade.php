@@ -31,14 +31,14 @@
                
                 <div class="text-center">
                   @if($categoria->activo)
-                    <form action="/categoria/{{$categoria->id}}/desactivar" method="POST">
-                      <a href='{{url("/categoria/$categoria->id/edit")}}' class="btn btn-success text-center"><i class="fas fa-edit"></i></a>
+                    <form action="{{route("categoria.desactivar", ['categoria' => $categoria->id])}}" method="POST">
+                      <a href="{{route('categoria.edit', ['categoria' => $categoria->id])}}" class="btn btn-success text-center"><i class="fas fa-edit"></i></a>
                       @csrf
                       <button type="submit" class="btn btn-danger"><i class="fas fa-toggle-off"></i></button>
                     </form>
                   @else
-                    <form action="/categoria/{{$categoria->id}}/activar" method="POST">
-                      <a href='{{url("/categoria/$categoria->id/edit")}}' class="btn btn-success text-center"><i class="fas fa-edit"></i></a>
+                    <form action="{{route("categoria.activar", ['categoria' => $categoria->id])}}" method="POST">
+                      <a href="{{route("categoria.edit", ['categoria' => $categoria->id])}}" class="btn btn-success text-center"><i class="fas fa-edit"></i></a>
                       @csrf
                       <button type="submit" class="btn btn-primary"><i class="fas fa-toggle-on"></i></button>
                     </form>

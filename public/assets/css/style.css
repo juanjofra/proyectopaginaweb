@@ -3163,7 +3163,7 @@ tbody.collapse.show {
   background-color: #fff;
   border: 1px solid #dee2e6; }
   .page-link:hover {
-    color: #ffbc12;
+    color: var(--color-principal-hover-plantilla);
     text-decoration: none;
     background-color: #e9ecef;
     border-color: #dee2e6; }
@@ -3186,8 +3186,8 @@ tbody.collapse.show {
 .page-item.active .page-link {
   z-index: 1;
   color: #fff;
-  background-color: #ffbc12;
-  border-color: #ffbc12; }
+  background-color:var(--color-principal-hover-plantilla);
+  border-color:var(--color-principal-hover-plantilla); }
 
 .page-item.disabled .page-link {
   color: #6c757d;
@@ -8571,12 +8571,6 @@ body:not(.home) .main-content {
     padding: 13px 20px; }
     .widget-categories-cat ul li a {
       position: relative; }
-      .widget-categories-cat ul li a:after {
-        content: '\f105';
-        font-family: FontAwesome;
-        float: right;
-        color: #9a9da2;
-        display: inline-block; }
     .widget-categories-cat ul li:not(:last-child) {
       border-bottom: solid 1px #e1e1e1; }
 
@@ -10127,6 +10121,14 @@ ul.columns {
 
 .archive-product .pagination {
   text-align: center; }
+
+
+  .product-featured-image {
+    width: 268px;
+    height: 335px;
+  }
+
+
 
 /* 11. Responsive */
 @media only screen and (min-width: 1230px) {

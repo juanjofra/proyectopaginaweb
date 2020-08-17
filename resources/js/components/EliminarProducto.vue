@@ -23,7 +23,7 @@ export default {
           const params = {
             id: this.productoId
           }
-          axios.post(`/producto/${this.productoId}`, {params, _method:'delete'}).then(respuesta => {
+          axios.post(`/admin/producto/${this.productoId}`, {params, _method:'delete'}).then(respuesta => {
              
            
 

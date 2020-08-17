@@ -13,39 +13,47 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+//Rutas web
+Route::get('/', 'WebController@index')->name('web.index');
+Route::get('/productos', 'WebController@productos')->name('web.productos');
+Route::get('/categoria-productos/{categoria}', 'WebController@categoriaProductos')->name('web.categoria-productos');
+Route::get('/detalle-producto/{producto}', 'WebController@detalleProducto')->name('web.detalle-producto');
+
+
+//Rutas Auth
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin/home', 'HomeController@index')->name('home');
+
 
 //Rutas Usuarios
-Route::get('/user', 'UserController@index')->name('user.index');
-Route::post('/user/{user}/denegar', 'UserController@denegar')->name('user.denegar');
-Route::post('/user/{user}/autorizar', 'UserController@autorizar')->name('user.autorizar');
+Route::get('/admin/user', 'UserController@index')->name('user.index');
+Route::post('/admin/user/{user}/denegar', 'UserController@denegar')->name('user.denegar');
+Route::post('/admin/user/{user}/autorizar', 'UserController@autorizar')->name('user.autorizar');
 
 //Rutas Categorias
-Route::get('/categoria', 'CategoriaController@index')->name('categoria.index');
-Route::get('/categoria/create', 'CategoriaController@create')->name('categoria.create');
-Route::post('/categoria/store', 'CategoriaController@store')->name('categoria.store');
-Route::post('/categoria/{categoria}/desactivar', 'CategoriaController@desactivar')->name('categoria.desactivar');
-Route::post('/categoria/{categoria}/activar', 'CategoriaController@activar')->name('categoria.activar');
-Route::get('/categoria/{categoria}/edit', 'CategoriaController@edit')->name('categoria.edit');
-Route::put('/categoria/{categoria}/update', 'CategoriaController@update')->name('categoria.update');
+Route::get('/admin/categoria', 'CategoriaController@index')->name('categoria.index');
+Route::get('/admin/categoria/create', 'CategoriaController@create')->name('categoria.create');
+Route::post('/admin/categoria/store', 'CategoriaController@store')->name('categoria.store');
+Route::post('/admin/categoria/{categoria}/desactivar', 'CategoriaController@desactivar')->name('categoria.desactivar');
+Route::post('/admin/categoria/{categoria}/activar', 'CategoriaController@activar')->name('categoria.activar');
+Route::get('/admin/categoria/{categoria}/edit', 'CategoriaController@edit')->name('categoria.edit');
+Route::put('/admin/categoria/{categoria}/update', 'CategoriaController@update')->name('categoria.update');
 
 
 //Rutas Productos
-Route::get('/producto', 'ProductoController@index')->name('producto.index');
-Route::get('/producto/create', 'ProductoController@create')->name('producto.create');
-Route::post('/producto/store', 'ProductoController@store')->name('producto.store');
-Route::get('/producto/{producto}/edit', 'ProductoController@edit')->name('producto.edit');
-Route::put('/producto/{producto}', 'ProductoController@update')->name('producto.update');
-Route::delete('/producto/{producto}', 'ProductoController@destroy')->name('producto.destroy');
+Route::get('/admin/producto', 'ProductoController@index')->name('producto.index');
+Route::get('/admin/producto/create', 'ProductoController@create')->name('producto.create');
+Route::post('/admin/producto/store', 'ProductoController@store')->name('producto.store');
+Route::get('/admin/producto/{producto}/edit', 'ProductoController@edit')->name('producto.edit');
+Route::put('/admin/producto/{producto}', 'ProductoController@update')->name('producto.update');
+Route::delete('/admin/producto/{producto}', 'ProductoController@destroy')->name('producto.destroy');
 
 
 //Rutas Galeria producto
-Route::get('/galeria/{producto}', 'GaleriaController@index')->name('galeria.index');
-Route::post('/galeria/store', 'GaleriaController@store')->name('galeria.store');
-Route::delete('/galeria/{galeria}', 'GaleriaController@destroy')->name('galeria.destroy');
+Route::get('/admin/galeria/{producto}', 'GaleriaController@index')->name('galeria.index');
+Route::post('/admin/galeria/store', 'GaleriaController@store')->name('galeria.store');
+Route::delete('/admin/galeria/{galeria}', 'GaleriaController@destroy')->name('galeria.destroy');

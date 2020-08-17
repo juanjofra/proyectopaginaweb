@@ -28,8 +28,8 @@
                 <td>{{$producto->nombre}}</td>
                 <td>{{$producto->categoria->nombre}}</td>
                 <td class='text-center justify-content-center align-content-center'>
-                  <a href='{{url("/producto/$producto->id/edit")}}' class="btn btn-lg"><i class="fas fa-edit"></i></a>
-                  <a href='{{url("/galeria/$producto->id")}}' class="btn btn-lg"><i class="far fa-images"></i></a>
+                  <a href="{{route("producto.edit", ['producto' => $producto->id])}}" class="btn btn-lg"><i class="fas fa-edit"></i></a>
+                  <a href="{{route("galeria.index", ['producto' => $producto->id])}}" class="btn btn-lg"><i class="far fa-images"></i></a>
                   <eliminar-producto producto-id={{ $producto->id }}></eliminar-producto>
                 </td>
               </tr>  
