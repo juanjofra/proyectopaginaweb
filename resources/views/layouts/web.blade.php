@@ -94,11 +94,8 @@
 													<li class="dropdown">
 														<a href="{{route('web.productos')}}">Productos</a>
 													</li>
-													<li class="dropdown"><a href="about.html">Nosotros</a></li>
-													<li><a href="product_list_sidebar_left.html">
-															Ofertas
-														</a></li>
-													<li><a href="contact.html"> Contacto</a></li>
+													<li class="dropdown"><a href="{{route('web.nosotros')}}">Nosotros</a></li>
+													<li><a href="{{route('web.contacto')}}"> Contacto</a></li>
 
 												</ul>
 												<!-- /Main navigation -->
@@ -137,22 +134,22 @@
 										<span class="icon-bar"></span>
 										<span class="icon-bar"></span>
 									</button>
-									<a class="navbar-brand" href="index.html"><img src="{{asset('assets/images/logo.png')}}" alt=""></a>
+									<a class="navbar-brand" href="{{route('web.index')}}"><img src="{{asset('assets/images/logo.png')}}" alt=""></a>
 								</div>
 
 								<div id="navbar" class="navbar-collapse collapse navbar-right navigation-mobile">
 									<button class="close-navbar"><i class="fa fa-close"></i></button>
 									<ul class="nav navbar-nav small-nav">
 										<li class="menu-item-has-children">
-											<a href="index.html">Inicio</a>
+											<a href="{{route('web.index')}}">Inicio</a>
 										</li>
 										<li class="menu-item-has-children">
-											<a href="product_grid_sidebar_left.html">Producto</a>
+											<a href="{{route('web.productos')}}">Producto</a>
 										</li>
-										<li class="menu-item-has-children"><a href="about.html">Nosotros</a></li>
+										<li class="menu-item-has-children"><a href="{{route('web.nosotros')}}">Nosotros</a></li>
 										<li class="menu-item-has-children">
 
-										<li class="menu-item-has-children"><a href="contact.html">Contacto</a></li>
+										<li class="menu-item-has-children"><a href="{{route('web.contacto')}}">Contacto</a></li>
 									</ul>
 								</div><!-- end of nav-collapse -->
 							</div><!-- end of container -->
@@ -188,7 +185,7 @@
 						<div class="col-md-5 footer-block">
 							<aside class="widget-text">
 								<div class="footer__logo">
-									<a href="#">
+									<a href="{{route('web.index')}}">
 										<img src="{{asset('assets/images/logo.png')}}" alt="">
 									</a>
 								</div>
@@ -210,9 +207,10 @@
 							<aside class="widget-menu-item">
 								<h3 class="widget-title">Accesos Rapidos</h3>
 								<ul class="columns-2">
-									<li><a href="index.html">Inicio</a></li>
-									<li><a href="about.html">Nosotros</a></li>
-									<li><a href="contact.html">Contacto</a></li>
+									<li><a href="{{route('web.index')}}">Inicio</a></li>
+									<li><a href="{{route('web.productos')}}">Productos</a></li>
+									<li><a href="{{route('web.nosotros')}}">Nosotros</a></li>
+									<li><a href="{{route('web.contacto')}}">Contacto</a></li>
 									<li><a href="#"> Politica de Delivery</a></li>
 								</ul>
 							</aside>

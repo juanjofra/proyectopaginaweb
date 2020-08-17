@@ -21,6 +21,7 @@ class CreateProductosTable extends Migration
             $table->integer('precio_compra')->nullable();
             $table->integer('precio_venta')->nullable();
             $table->string('imagen')->nullable();
+            $table->boolean('destacado')->default(false);
             $table->foreignId('categoria_id')->index('id')->on('categorias');
 
             $table->timestamps();

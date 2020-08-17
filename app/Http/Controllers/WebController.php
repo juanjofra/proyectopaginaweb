@@ -41,20 +41,17 @@ class WebController extends Controller
     }
 
    
-    public function edit(Web $web)
+    public function nosotros()
     {
-        //
+        return view('web.nosotros');
     }
 
   
-    public function update(Request $request, Web $web)
+    public function contacto()
     {
-        //
+        return view('web.contacto');
     }
 
   
-    public function destroy(Web $web)
-    {
-        //
-    }
+   
 }
