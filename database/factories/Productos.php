@@ -13,6 +13,6 @@ $factory->define(Producto::class, function (Faker $faker) {
         'precio_compra' => $faker->numberBetween($min = 1000, $max = 9000),
         'precio_venta' => $faker->numberBetween($min = 1000, $max = 9000),
          
-        'categoria_id' => $faker->numberBetween($min = 1, $max = 5),
+        'categoria_id' => $faker->numberBetween($min = 1, $max = 3),
     ];
 });
