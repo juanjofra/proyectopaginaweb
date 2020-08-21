@@ -16,8 +16,8 @@ class CategoriaController extends Controller
     public function index()
     {
         $categorias = Categoria::all();
-        
-        return view('Categoria.index', compact('categorias'));
+        $categoriasDestacados = Categoria::where('destacado', 1)->get();
+        return view('Categoria.index', compact('categorias', 'categoriasDestacados'));
         
     }
 
@@ -89,6 +89,25 @@ class CategoriaController extends Controller
     {
         //dd( $categoria );
         $categoria->activo = true;
+        
+        $categoria->save();
+        return redirect()->route('categoria.index');
+    }
+
+    public function destacar(Categoria $categoria)
+    {
+        //dd( $categoria );
+        $categoria->destacado = true;
+        
+        $categoria->save();
+        return redirect()->route('categoria.index');
+    }
+
+
+    public function nodestacar(Categoria $categoria)
+    {
+        //dd( $categoria );
+        $categoria->destacado = false;
         
         $categoria->save();
         return redirect()->route('categoria.index');

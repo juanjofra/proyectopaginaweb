@@ -31,7 +31,7 @@
               <div class="product-image ">
                 <div class="product-thumbnail">
                   <a href="{{route('web.detalle-producto', ['producto' => $producto->id])}}" title="">
-                  <img class="product-featured-image" src='{{"/imagenes/producto/$producto->imagen"}}' alt="">
+                  <img class="product-detail-featured-image" src='{{"/imagenes/producto/$producto->imagen"}}' alt="">
                   </a>
                 </div>
               </div>
@@ -42,12 +42,19 @@
                 </h4>
                 <div class="product-form-cart">
                   <div class="product-price">
+                    @if (($producto->precio_venta) > 0 && ($producto->oferta) == 0)
+                      <ins>
+                        <span class="amout">Gs {{$producto->precio_venta}}</span>
+                      </ins>    
+                    @endif
+                    @if ($producto->oferta > 0)
                     <ins>
-                      <span class="amout">Gs 50.000</span>
+                      <span class="amout">Gs {{$producto->oferta}}</span>
                     </ins>
                     <del>
-                      <span class="amout">Gs 150.000</span>
+                      <span class="amout">Gs {{$producto->precio_venta}}</span>
                     </del>
+                    @endif
                   </div>
                 </div>
               </div>
@@ -61,315 +68,49 @@
     <div role="tabpanel" class="tab-pane fade" id="list-view">
       <div class="product products-list">
         <div class="row row-products">
-
+          @foreach ($productos as $producto)
           <div class="col-md-12 product-block-list">
             <div class="row">
               <div class="col-lg-4 col-md-12 col-sm-12">
                 <figure class="product-image">
                   <div class="product-thumbnail">
-                    <a href="#" title="">
-                      <img class="product-featured-image" src="https://via.placeholder.com/470x580" alt="">
+                    <a href="{{route('web.detalle-producto', ['producto' => $producto->id])}}" title="">
+                      <img class="product-detail-featured-image" src='{{"/imagenes/producto/$producto->imagen"}}' alt="">
                     </a>
                   </div>
                 </figure><!-- /.product-image -->
               </div>
               <div class="col-lg-8 col-md-12 col-sm-12">
                 <div class="product-caption">
-                  <span class="posted_in"><a href="#" rel="tag">PSP</a></span>
+                  <span class="posted_in"><a href="{{route('web.categoria-productos', ['categoria' => $producto->categoria->id])}}" rel="tag">{{$producto->categoria->nombre}}</a></span>
                   <div class="product-meta">
                     <h4 class="product-name">
-                      <a href="product_single_no_sidebar.html" title="">Producto</a>
+                      <a href="{{route('web.detalle-producto', ['producto' => $producto->id])}}" title="">{{$producto->nombre}}</a>
                     </h4>
                     <div class="product-price">
+                      @if (($producto->precio_venta) > 0 && ($producto->oferta) == 0)
+                        <ins>
+                          <span class="amout">Gs {{$producto->precio_venta}}</span>
+                        </ins>    
+                      @endif
+                      @if ($producto->oferta > 0)
                       <ins>
-                        <span class="amout">Gs 90.000</span>
+                        <span class="amout">Gs {{$producto->oferta}}</span>
                       </ins>
                       <del>
-                        <span class="amout">Gs 220.000</span>
+                        <span class="amout">Gs {{$producto->precio_venta}}</span>
                       </del>
+                      @endif
                     </div>
                   </div>
                   <div class="excerpt">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia minima laudantium quaerat perspiciatis ad iste inventore culpa dolorem earum cupiditate magnam magni rerum veniam corporis, nisi quidem at repellendus voluptas!
-                  </div>
-                  <div class="product-footer">
-                    <a href="cart.html" class="btn btn-default add_to_cart_button"><i
-                        class="fa fa-shopping-basket" aria-hidden="true"></i>Agregar al carrito</a>
-                    <div class="product-actions">
-                      <a href="#" data-id="" class="btn wishlist product-quick-whistlist"
-                        title="Agregar a favorito">
-                        <i class="fa fa-heart-o"></i>
-                      </a>
-                    </div>
+                    {{$producto->descripcion_corta}}
                   </div>
                 </div><!-- /.product-meta -->
               </div>
             </div>
-          </div>
-          <div class="col-md-12 product-block-list">
-            <div class="row">
-              <div class="col-lg-4 col-md-12 col-sm-12">
-                <figure class="product-image">
-                  <div class="product-thumbnail">
-                    <a href="#" title="">
-                      <img class="product-featured-image" src="https://via.placeholder.com/470x580" alt="">
-                    </a>
-                  </div>
-                </figure><!-- /.product-image -->
-              </div>
-              <div class="col-lg-8 col-md-12 col-sm-12">
-                <div class="product-caption">
-                  <span class="posted_in"><a href="#" rel="tag">PSP</a></span>
-                  <div class="product-meta">
-                    <h4 class="product-name">
-                      <a href="product_single_no_sidebar.html" title="">Producto</a>
-                    </h4>
-                    <div class="product-price">
-                      <ins>
-                        <span class="amout">Gs 90.000</span>
-                      </ins>
-                    </div>
-                  </div>
-                  <div class="excerpt">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia minima laudantium quaerat perspiciatis ad iste inventore culpa dolorem earum cupiditate magnam magni rerum veniam corporis, nisi quidem at repellendus voluptas!
-                  </div>
-                  <div class="product-footer">
-                  </div>
-                </div><!-- /.product-meta -->
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12 product-block-list">
-            <div class="row">
-              <div class="col-lg-4 col-md-12 col-sm-12">
-                <figure class="product-image">
-                  <div class="product-thumbnail">
-                    <a href="#" title="">
-                      <img class="product-featured-image" src="https://via.placeholder.com/470x580" alt="">
-                    </a>
-                  </div>
-                </figure><!-- /.product-image -->
-              </div>
-              <div class="col-lg-8 col-md-12 col-sm-12">
-                <div class="product-caption">
-                  <span class="posted_in"><a href="#" rel="tag">PSP</a></span>
-                  <div class="product-meta">
-                    <h4 class="product-name">
-                      <a href="product_single_no_sidebar.html" title="">Producto</a>
-                    </h4>
-                    <div class="product-price">
-                      <ins>
-                        <span class="amout">Gs 90.000</span>
-                      </ins>
-                    </div>
-                  </div>
-                  <div class="excerpt">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia minima laudantium quaerat perspiciatis ad iste inventore culpa dolorem earum cupiditate magnam magni rerum veniam corporis, nisi quidem at repellendus voluptas!
-                  </div>
-                  <div class="product-footer">
-                  </div>
-                </div><!-- /.product-meta -->
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12 product-block-list">
-            <div class="row">
-              <div class="col-lg-4 col-md-12 col-sm-12">
-                <figure class="product-image">
-                  <div class="product-thumbnail">
-                    <a href="#" title="">
-                      <img class="product-featured-image" src="https://via.placeholder.com/470x580" alt="">
-                    </a>
-                  </div>
-                </figure><!-- /.product-image -->
-              </div>
-              <div class="col-lg-8 col-md-12 col-sm-12">
-                <div class="product-caption">
-                  <span class="posted_in"><a href="#" rel="tag">PSP</a></span>
-                  <div class="product-meta">
-                    <h4 class="product-name">
-                      <a href="product_single_no_sidebar.html" title="">Producto</a>
-                    </h4>
-                    <div class="product-price">
-                      <ins>
-                        <span class="amout">Gs 90.000</span>
-                      </ins>
-                    </div>
-                  </div>
-                  <div class="excerpt">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia minima laudantium quaerat perspiciatis ad iste inventore culpa dolorem earum cupiditate magnam magni rerum veniam corporis, nisi quidem at repellendus voluptas!
-                  </div>
-                  <div class="product-footer">
-                  </div>
-                </div><!-- /.product-meta -->
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12 product-block-list">
-            <div class="row">
-              <div class="col-lg-4 col-md-12 col-sm-12">
-                <figure class="product-image">
-                  <div class="product-thumbnail">
-                    <a href="#" title="">
-                      <img class="product-featured-image" src="https://via.placeholder.com/470x580" alt="">
-                    </a>
-                  </div>
-                </figure><!-- /.product-image -->
-              </div>
-              <div class="col-lg-8 col-md-12 col-sm-12">
-                <div class="product-caption">
-                  <span class="posted_in"><a href="#" rel="tag">PSP</a></span>
-                  <div class="product-meta">
-                    <h4 class="product-name">
-                      <a href="product_single_no_sidebar.html" title="">Producto</a>
-                    </h4>
-                    <div class="product-price">
-                      <ins>
-                        <span class="amout">Gs 90.000</span>
-                      </ins>
-                    </div>
-                  </div>
-                  <div class="excerpt">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia minima laudantium quaerat perspiciatis ad iste inventore culpa dolorem earum cupiditate magnam magni rerum veniam corporis, nisi quidem at repellendus voluptas!
-                  </div>
-                  <div class="product-footer">
-                  </div>
-                </div><!-- /.product-meta -->
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12 product-block-list">
-            <div class="row">
-              <div class="col-lg-4 col-md-12 col-sm-12">
-                <figure class="product-image">
-                  <div class="product-thumbnail">
-                    <a href="#" title="">
-                      <img class="product-featured-image" src="https://via.placeholder.com/470x580" alt="">
-                    </a>
-                  </div>
-                </figure><!-- /.product-image -->
-              </div>
-              <div class="col-lg-8 col-md-12 col-sm-12">
-                <div class="product-caption">
-                  <span class="posted_in"><a href="#" rel="tag">PSP</a></span>
-                  <div class="product-meta">
-                    <h4 class="product-name">
-                      <a href="product_single_no_sidebar.html" title="">Producto</a>
-                    </h4>
-                    <div class="product-price">
-                      <ins>
-                        <span class="amout">Gs 90.000</span>
-                      </ins>
-                    </div>
-                  </div>
-                  <div class="excerpt">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia minima laudantium quaerat perspiciatis ad iste inventore culpa dolorem earum cupiditate magnam magni rerum veniam corporis, nisi quidem at repellendus voluptas!
-                  </div>
-                  <div class="product-footer">
-                  </div>
-                </div><!-- /.product-meta -->
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12 product-block-list">
-            <div class="row">
-              <div class="col-lg-4 col-md-12 col-sm-12">
-                <figure class="product-image">
-                  <div class="product-thumbnail">
-                    <a href="#" title="">
-                      <img class="product-featured-image" src="https://via.placeholder.com/470x580" alt="">
-                    </a>
-                  </div>
-                </figure><!-- /.product-image -->
-              </div>
-              <div class="col-lg-8 col-md-12 col-sm-12">
-                <div class="product-caption">
-                  <span class="posted_in"><a href="#" rel="tag">PSP</a></span>
-                  <div class="product-meta">
-                    <h4 class="product-name">
-                      <a href="product_single_no_sidebar.html" title="">Producto</a>
-                    </h4>
-                    <div class="product-price">
-                      <ins>
-                        <span class="amout">Gs 90.000</span>
-                      </ins>
-                    </div>
-                  </div>
-                  <div class="excerpt">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia minima laudantium quaerat perspiciatis ad iste inventore culpa dolorem earum cupiditate magnam magni rerum veniam corporis, nisi quidem at repellendus voluptas!
-                  </div>
-                  <div class="product-footer">
-                  </div>
-                </div><!-- /.product-meta -->
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12 product-block-list">
-            <div class="row">
-              <div class="col-lg-4 col-md-12 col-sm-12">
-                <figure class="product-image">
-                  <div class="product-thumbnail">
-                    <a href="#" title="">
-                      <img class="product-featured-image" src="https://via.placeholder.com/470x580" alt="">
-                    </a>
-                  </div>
-                </figure><!-- /.product-image -->
-              </div>
-              <div class="col-lg-8 col-md-12 col-sm-12">
-                <div class="product-caption">
-                  <span class="posted_in"><a href="#" rel="tag">PSP</a></span>
-                  <div class="product-meta">
-                    <h4 class="product-name">
-                      <a href="product_single_no_sidebar.html" title="">Producto</a>
-                    </h4>
-                    <div class="product-price">
-                      <ins>
-                        <span class="amout">Gs 90.000</span>
-                      </ins>
-                    </div>
-                  </div>
-                  <div class="excerpt">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia minima laudantium quaerat perspiciatis ad iste inventore culpa dolorem earum cupiditate magnam magni rerum veniam corporis, nisi quidem at repellendus voluptas!
-                  </div>
-                  <div class="product-footer">
-                  </div>
-                </div><!-- /.product-meta -->
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12 product-block-list">
-            <div class="row">
-              <div class="col-lg-4 col-md-12 col-sm-12">
-                <figure class="product-image">
-                  <div class="product-thumbnail">
-                    <a href="#" title="">
-                      <img class="product-featured-image" src="https://via.placeholder.com/470x580" alt="">
-                    </a>
-                  </div>
-                </figure><!-- /.product-image -->
-              </div>
-              <div class="col-lg-8 col-md-12 col-sm-12">
-                <div class="product-caption">
-                  <span class="posted_in"><a href="#" rel="tag">PSP</a></span>
-                  <div class="product-meta">
-                    <h4 class="product-name">
-                      <a href="product_single_no_sidebar.html" title="">Producto</a>
-                    </h4>
-                    <div class="product-price">
-                      <ins>
-                        <span class="amout">Gs 90.000</span>
-                      </ins>
-                    </div>
-                  </div>
-                  <div class="excerpt">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia minima laudantium quaerat perspiciatis ad iste inventore culpa dolorem earum cupiditate magnam magni rerum veniam corporis, nisi quidem at repellendus voluptas!
-                  </div>
-                  <div class="product-footer">
-                  </div>
-                </div><!-- /.product-meta -->
-              </div>
-            </div>
-          </div>
+          </div>    
+          @endforeach
         </div>
       </div>
     </div>

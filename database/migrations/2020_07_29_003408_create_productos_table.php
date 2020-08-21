@@ -15,11 +15,12 @@ class CreateProductosTable extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo');
             $table->string('nombre');
+            $table->string('descripcion_corta');
             $table->text('descripcion');
-            $table->integer('precio_compra')->nullable();
-            $table->integer('precio_venta')->nullable();
+            $table->text('detalle_producto')->nullable();
+            $table->double('precio_venta')->default(0);
+            $table->double('oferta')->default(0);
             $table->string('imagen')->nullable();
             $table->boolean('destacado')->default(false);
             $table->foreignId('categoria_id')->index('id')->on('categorias');

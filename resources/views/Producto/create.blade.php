@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
-@section('styles')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.4/trix.min.css" integrity="sha512-sC2S9lQxuqpjeJeom8VeDu/jUJrVfJM7pJJVuH9bqrZZYqGe7VhTASUb3doXVk6WtjD0O4DTS+xBx2Zpr1vRvg==" crossorigin="anonymous" />
-@endsection
+@push('styles')
+@endpush
 
 @section('content')
 
@@ -16,17 +15,6 @@
                 @csrf
                 <div class="row">
                   <div class="col">
-      
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Titulo:</label>
-                      <input type="text" class="form-control @error('titulo') is-invalid @enderror" id="titulo" name="titulo" aria-describedby="emailHelp" value="{{ old('titulo')}}">
-                      @error('titulo')
-                        <span class="invalid-feedback d-block" role="alert">
-                          <strong>{{$message}}</strong>
-                        </span> 
-                      @enderror
-                    </div>
-      
                     <div class="form-group">
                       <label for="exampleInputEmail1">Nombre:</label>
                       <input type="text" class="form-control @error('nombre') is-invalid @enderror" id="nombre" name="nombre" aria-describedby="emailHelp" value="{{ old('nombre')}}">
@@ -36,18 +24,27 @@
                         </span> 
                       @enderror
                     </div>
+                    
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Descripcion Corta:</label>
+                      <input type="text" class="form-control @error('descripcion_corta') is-invalid @enderror" id="descripcion_corta" name="descripcion_corta" aria-describedby="emailHelp" value="{{ old('descripcion_corta')}}">
+                      @error('descripcion_corta')
+                        <span class="invalid-feedback d-block" role="alert">
+                          <strong>{{$message}}</strong>
+                        </span> 
+                      @enderror
+                    </div>
           
                     <div class="form-group">
                       <label for="exampleFormControlTextarea1">Descripcion:</label>
-                      <input type="hidden" id="descripcion" name="descripcion" aria-describedby="emailHelp" value="{{ old('descripcion')}}">
-                      <trix-editor input="descripcion" class="@error('descripcion') is-invalid @enderror"></trix-editor>
-      
+                      <textarea class="form-control" name="descripcion" id="descripcion" cols="10" rows="5"></textarea>
                       @error('descripcion')
                         <span class="invalid-feedback d-block" role="alert">
                           <strong>{{$message}}</strong>
                         </span> 
                       @enderror
                     </div>
+
                   </div>
   
                   <div class="col">
@@ -79,9 +76,48 @@
                         </span> 
                       @enderror
                     </div>
+
                   </div>
                 </div>
   
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Precio:</label>
+                      <input type="number" class="form-control @error('precio_venta') is-invalid @enderror" id="precio_venta" name="precio_venta" aria-describedby="emailHelp" value="{{ old('precio_venta')}}">
+                      @error('precio_venta')
+                        <span class="invalid-feedback d-block" role="alert">
+                          <strong>{{$message}}</strong>
+                        </span> 
+                      @enderror
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Oferta:</label>
+                      <input type="number" class="form-control @error('oferta') is-invalid @enderror" id="oferta" name="oferta" aria-describedby="emailHelp" value="{{ old('oferta')}}">
+                      @error('oferta')
+                        <span class="invalid-feedback d-block" role="alert">
+                          <strong>{{$message}}</strong>
+                        </span> 
+                      @enderror
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Detalle del producto:</label>
+                      <textarea class="form-control editor" name="detalle_producto" id="detalle_producto"></textarea>
+                      @error('detalle_producto')
+                        <span class="invalid-feedback d-block" role="alert">
+                          <strong>{{$message}}</strong>
+                        </span> 
+                      @enderror
+                    </div>
+                  </div>
+                </div>
       
                 <div class="from-group text-center mt-5">
                   <div class="row">
@@ -103,46 +139,109 @@
 
 @endsection
 
-@section('scripts')
+@push('scripts')
+
+<script src="{{asset('ckeditor5/build/ckeditor.js')}}"></script>
 
 <script type="text/javascript">
- window.addEventListener("load", function(){
-  document.getElementById("file").onchange = function(e) {
-   // Creamos el objeto de la clase FileReader
-    let reader = new FileReader();
-
-    // Leemos el archivo subido y se lo pasamos a nuestro fileReader
-    
-    if(e.target.files[0]){
-      reader.readAsDataURL(e.target.files[0]);
-
-      // Le decimos que cuando este listo ejecute el código interno
-      reader.onload = function(){
-        let preview = document.getElementById('preview'),
-                image = document.createElement('img');
-
-        image.src = reader.result;
-        image.className = "preview_imagen"
-
-        preview.innerHTML = '';
-        preview.append(image);
-      };
-    }else{
-      let preview = document.getElementById('preview'),
-                image = document.createElement('img');
-
-        image.src = '';
-        image.className = "preview_imagen"
-
-        preview.innerHTML = '';
-        preview.append(image);
-    }
-    
-  }
-});
+  window.addEventListener("load", function(){
+   document.getElementById("file").onchange = function(e) {
+    // Creamos el objeto de la clase FileReader
+     let reader = new FileReader();
+ 
+     // Leemos el archivo subido y se lo pasamos a nuestro fileReader
+     
+     if(e.target.files[0]){
+       reader.readAsDataURL(e.target.files[0]);
+ 
+       // Le decimos que cuando este listo ejecute el código interno
+       reader.onload = function(){
+         let preview = document.getElementById('preview'),
+                 image = document.createElement('img');
+ 
+         image.src = reader.result;
+         image.className = "preview_imagen"
+ 
+         preview.innerHTML = '';
+         preview.append(image);
+       };
+     }else{
+       let preview = document.getElementById('preview'),
+                 image = document.createElement('img');
+ 
+         image.src = '';
+         image.className = "preview_imagen"
+ 
+         preview.innerHTML = '';
+         preview.append(image);
+     }
+     
+   }
+ });
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.4/trix.js" integrity="sha512-zEL66hBfEMpJUz7lHU3mGoOg12801oJbAfye4mqHxAbI0TTyTePOOb2GFBCsyrKI05UftK2yR5qqfSh+tDRr4Q==" crossorigin="anonymous"></script>
+<script>
+  window.addEventListener("load", function() {
+ ClassicEditor
+     .create( document.querySelector( '.editor' ), {
+       
+       toolbar: {
+         items: [
+           'heading',
+           '|',
+           'bold',
+           'italic',
+           'underline',
+           'strikethrough',
+           '|',
+           'bulletedList',
+           'numberedList',
+           '|',
+           'alignment',
+           'fontSize',
+           '|',
+           'indent',
+           'outdent',
+           '|',
+           'link',
+           'imageUpload',
+           'blockQuote',
+           'insertTable',
+           'undo',
+           'redo'
+         ]
+       },
+       language: 'es',
+       image: {
+         toolbar: [
+           'imageTextAlternative',
+           'imageStyle:full',
+           'imageStyle:side'
+         ]
+       },
+       table: {
+         contentToolbar: [
+           'tableColumn',
+           'tableRow',
+           'mergeTableCells',
+           'tableCellProperties',
+           'tableProperties'
+         ]
+       },
+       licenseKey: '',
+       
+     } )
+     .then( editor => {
+       window.editor = editor;
+     } )
+     .catch( error => {
+       console.error( 'Oops, something went wrong!' );
+       console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+       console.warn( 'Build id: um9fquczyq8m-m93lrfwfgpl3' );
+       console.error( error );
+     } );
+   });
+</script>
 
 
-@endsection
+@endpush

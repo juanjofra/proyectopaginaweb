@@ -32,15 +32,15 @@ class ProductoController extends Controller
     
     public function store(Request $request)
     {
-        //dd($request->all());
+        dd($request->all());
         $validatedData = $request->validate([
             'select_categoria' => 'required',
-            'titulo' => 'required|min:2',
             'nombre' => 'required|min:2',
-            'descripcion' => 'required',
+            'descripcion_corta' => 'required|min:2',
+            'precio_venta' => 'required',
             'imagen' => 'required|image',
         ]);
-
+        
         //Cargar imagen y guardar en la carpeta public
         $file = $request->file('imagen');
         $path = public_path(). '/imagenes/producto';
@@ -49,9 +49,14 @@ class ProductoController extends Controller
 
         $producto = new Producto;
         $producto->categoria_id = $request->select_categoria;
-        $producto->titulo = $request->titulo;
         $producto->nombre = $request->nombre;
+        $producto->descripcion_corta = $request->descripcion_corta;
         $producto->descripcion = $request->descripcion;
+        $producto->detalle_producto = $request->detalle_producto;
+        $producto->precio_venta = $request->precio_venta;
+        if($request->oferta){
+            $producto->oferta = $request->oferta;
+        }
         $producto->imagen = $fileName;
 
         $producto->save();
@@ -79,16 +84,21 @@ class ProductoController extends Controller
         //dd($request->all());
         $validatedData = $request->validate([
             'select_categoria' => 'required',
-            'titulo' => 'required|min:2',
             'nombre' => 'required|min:2',
-            'descripcion' => 'required',
+            'descripcion_corta' => 'required|min:2',
+            'precio_venta' => 'required',
         ]);
 
        
-        $producto->categoria_id = $request->select_categoria;
-        $producto->titulo = $request->titulo;
-        $producto->descripcion = $request->descripcion;
+      $producto->categoria_id = $request->select_categoria;
         $producto->nombre = $request->nombre;
+        $producto->descripcion_corta = $request->descripcion_corta;
+        $producto->descripcion = $request->descripcion;
+        $producto->detalle_producto = $request->detalle_producto;
+        $producto->precio_venta = $request->precio_venta;
+        if($request->oferta){
+            $producto->oferta = $request->oferta;
+        }
 
         if(request('imagen')){
             //Eliminamos la imagen antes de guardar el nuevo editado
@@ -131,5 +141,19 @@ class ProductoController extends Controller
 
        
         //return redirect()->route('producto.index');
+    }
+
+    public function destacar(Producto $producto){
+        $producto->destacado = true;
+        $producto->save();
+
+        return;
+    }
+
+    public function nodestacar(Producto $producto){
+        $producto->destacado = false;
+        $producto->save();
+
+        return;
     }
 }

@@ -42,7 +42,7 @@
 		==== Start header -->
 		<header class="header drank ">
 
-			<div class="header_container" style="background:url({{asset('assets/images/bg_header.jpg')}}) repeat">
+			<div class="header_container" style="background:#111111">
 
 				<!-- header-desktop -->
 				<div class="header-menu  header-desktop">

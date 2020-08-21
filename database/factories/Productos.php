@@ -7,10 +7,10 @@ use Faker\Generator as Faker;
 
 $factory->define(Producto::class, function (Faker $faker) {
     return [
-        'titulo' => $faker->title,
         'nombre'=> $faker->name,
+        'descripcion_corta' => $faker->title,
         'descripcion' => $faker->paragraph,
-        'precio_compra' => $faker->numberBetween($min = 1000, $max = 9000),
+        'detalle_producto' => $faker->paragraph,
         'precio_venta' => $faker->numberBetween($min = 1000, $max = 9000),
          
         'categoria_id' => $faker->numberBetween($min = 1, $max = 3),

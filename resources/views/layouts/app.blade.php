@@ -8,6 +8,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -17,18 +20,15 @@
 
     <script src="https://kit.fontawesome.com/da8e6b6767.js" crossorigin="anonymous"></script>
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    @yield('styles')
-
     
+
+    @stack('styles')
 </head>
 <body class="container.fluid">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ route('home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -72,15 +72,12 @@
         </nav>
 
         <div class="m-0 mt-1">
-            
                 @yield('content')
-               
-        </div>
-            
-        
+        </div>  
     </div>
 
-    @yield('scripts')
    
+    @stack('scripts')
+ 
 </body>
 </html>

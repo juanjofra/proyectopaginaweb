@@ -16,7 +16,10 @@ class WebController extends Controller
      */
     public function index()
     {
-        return view('web.index');
+        $productosDestacados = Producto::with('categoria')->where('destacado', 1)->inRandomOrder()->limit(6)->get();
+        $categoriaDescatados = Categoria::where('destacado', 1)->get();
+        //dd($categoriaDescatados);
+        return view('web.index', compact('categoriaDescatados', 'productosDestacados'));
     }
 
 

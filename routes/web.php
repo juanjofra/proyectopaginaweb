@@ -33,6 +33,8 @@ Route::post('/admin/categoria/{categoria}/desactivar', 'CategoriaController@desa
 Route::post('/admin/categoria/{categoria}/activar', 'CategoriaController@activar')->name('categoria.activar');
 Route::get('/admin/categoria/{categoria}/edit', 'CategoriaController@edit')->name('categoria.edit');
 Route::put('/admin/categoria/{categoria}/update', 'CategoriaController@update')->name('categoria.update');
+Route::post('/admin/categoria/{categoria}/destacar', 'CategoriaController@destacar')->name('categoria.destacar');
+Route::post('/admin/categoria/{categoria}/nodestacar', 'CategoriaController@nodestacar')->name('categoria.nodestacar');
 
 
 //Rutas Productos
@@ -42,6 +44,8 @@ Route::post('/admin/producto/store', 'ProductoController@store')->name('producto
 Route::get('/admin/producto/{producto}/edit', 'ProductoController@edit')->name('producto.edit');
 Route::put('/admin/producto/{producto}', 'ProductoController@update')->name('producto.update');
 Route::delete('/admin/producto/{producto}', 'ProductoController@destroy')->name('producto.destroy');
+Route::post('/admin/producto/destacar/{producto}', 'ProductoController@destacar')->name('producto.destacar');
+Route::post('/admin/producto/nodestacar/{producto}', 'ProductoController@nodestacar')->name('producto.nodestacar');
 
 
 //Rutas Galeria producto

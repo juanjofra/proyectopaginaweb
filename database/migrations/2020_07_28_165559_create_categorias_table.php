@@ -18,6 +18,7 @@ class CreateCategoriasTable extends Migration
             $table->string('nombre');
             $table->text('descripcion');
             $table->boolean('activo')->default(true);
+            $table->boolean('destacado')->default(false);
             $table->timestamps();
         });
     }

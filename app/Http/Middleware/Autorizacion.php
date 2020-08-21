@@ -17,7 +17,6 @@ class Autorizacion
     public function handle($request, Closure $next)
     {
         if(!Auth::user()->autorizacion){
-            //dd(auth()->user());
             Auth::logout();
             return redirect('/login');
         }
