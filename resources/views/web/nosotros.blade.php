@@ -14,7 +14,7 @@
             <h2 class="heading__title">
               NOSOTROS
             </h2>
-            <div class="heading__description pt-40 pb-60">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, libero magni distinctio hic tempora ab vel. Unde esse cumque, vero voluptatem, consequuntur rerum quidem in eum iste, accusamus nihil tenetur!
+            <div class="heading__description pt-40 pb-60">{!! $configuracion->nosotros !!}
             </div>
 
             <div class="row">
@@ -41,9 +41,9 @@
     <!--/section-image -->
 
     <!-- section-about-info -->
-    <div class="section-about-info">
+    {{-- <div class="section-about-info">
       
-    </div>
+    </div> --}}
     <!-- /section-about-info-->
 
   

@@ -5,8 +5,8 @@
 
 @section('content')
 
-  <div class="container">
-    <div class="card mt-4 shadow-sm">
+  <div class="container-fluid">
+    <div class="card mt-4 shadow">
       <h5 class="card-header">Nuevo Producto</h5>
       <div class="card-body">
         <div class="row justify-content-center">
@@ -243,5 +243,5 @@
    });
 </script>
 
-
+ 
 @endpush

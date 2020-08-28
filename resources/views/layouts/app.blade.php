@@ -10,21 +10,22 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" defer rel="stylesheet">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;531;900&display=swap" rel="stylesheet">
 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
     <script src="https://kit.fontawesome.com/da8e6b6767.js" crossorigin="anonymous"></script>
 
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 
     @stack('styles')
 </head>
-<body class="container.fluid">
+<body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -76,7 +77,8 @@
         </div>  
     </div>
 
-   
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
     @stack('scripts')
  
 </body>

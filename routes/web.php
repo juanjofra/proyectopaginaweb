@@ -11,7 +11,7 @@ Route::get('/categoria-productos/{categoria}', 'WebController@categoriaProductos
 Route::get('/detalle-producto/{producto}', 'WebController@detalleProducto')->name('web.detalle-producto');
 Route::get('/nosotros', 'WebController@nosotros')->name('web.nosotros');
 Route::get('/contacto', 'WebController@contacto')->name('web.contacto');
-
+Route::post('/contacto/formcontacto', 'WebController@formcontacto')->name('web.formcontacto');
 
 //Rutas Auth
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
@@ -19,6 +19,14 @@ Auth::routes();
 
 Route::get('/admin/home', 'HomeController@index')->name('home');
 
+//Rutas Configuracion
+Route::get('/admin/configuracion', 'ConfiguracionController@index')->name('configuracion.index');
+Route::put('/admin/configuracion/{configuracion}/update', 'ConfiguracionController@update')->name('configuracion.update');
+Route::delete('/admin/configuracion/{configuracion}/banner1', 'ConfiguracionController@destroyBanner1');
+Route::delete('/admin/configuracion/{configuracion}/banner2', 'ConfiguracionController@destroyBanner2');
+Route::delete('/admin/configuracion/{configuracion}/banner3', 'ConfiguracionController@destroyBanner3');
+Route::delete('/admin/configuracion/{configuracion}/bannerOferta1', 'ConfiguracionController@destroyBannerOferta1');
+Route::delete('/admin/configuracion/{configuracion}/bannerOferta2', 'ConfiguracionController@destroyBannerOferta2');
 
 //Rutas Usuarios
 Route::get('/admin/user', 'UserController@index')->name('user.index');

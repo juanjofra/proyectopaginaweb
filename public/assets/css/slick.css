@@ -24,7 +24,7 @@
      margin: 0;
      padding: 0;
 }
-}
+
  .slick-list:focus {
      outline: none;
 }
@@ -140,7 +140,7 @@
 .container {
      position: relative;
 }
-}
+
  .slick-slide img {
      margin: 0 auto;
 }

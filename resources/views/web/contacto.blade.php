@@ -1,7 +1,9 @@
 @extends('layouts.web')
 
 @section('content')
-
+@php
+$configuracion = DB::table('configuracions')->where('id',  1)->first();
+@endphp
 <div class="main-content mt-4">
   <!-- Start contact ====
       ======================================= -->
@@ -18,35 +20,50 @@
             <h3 class="contact_heading">
               Informacion de contacto.
             </h3>
+            <p>Contactos para realizar pedidos o sugerencias:</p>
             <div class="contact_description">
-              Contactos para realizar pedidos o sugerencias.
+              
+            <p>{{$configuracion->mensaje_delivery}}</p>
             </div>
             <div class="contact__language">
               <img src="assets/images/contact/contact_icon1.jpg" alt="">
               <div class="contact_info__language">
-                <div class="text-uppercase"><i class="fa fa-pencil-square" aria-hidden="true"></i>Direccion del local o cobertura del delivery</div>
-                <div><i class="fa fa-phone-square" aria-hidden="true"></i>0981 123-456 (021) 123-456</div>
+                <div class="text-uppercase"><i class="fa fa-pencil-square" aria-hidden="true"></i>{{$configuracion->direccion_tienda}}</div>
+                <div><i class="fa fa-phone-square" aria-hidden="true"></i>{{$configuracion->telefono_contacto}}</div>
                 <div class="text-uppercase"><i class="fa fa-envelope-square"
-                    aria-hidden="true"></i>info@example.com</div>
+                    aria-hidden="true"></i>{{$configuracion->correo_contacto}}</div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <!-- Start form contact ====
+    ======================================= -->
       <div class="contact_form">
         <h3 class="contact_heading text-center pt-50 pb-30">
           Contactenos
         </h3>
 
-        <form action="#" method="post" id="commentform" class="comment-form" novalidate="">
+        <form action="{{route('web.formcontacto')}}" method="POST"  class="comment-form">
+          @csrf
           <div class="row">
             <div class="form-group col-md-4">
               <input type="text" name="author" class="form-control" placeholder="Nombre" id="author" value=""
-                aria-required="true">
+                aria-required="true" required>
+                @error('author')
+                  <span class="invalid-feedback d-block" role="alert">
+                    <strong>{{$message}}</strong>
+                  </span> 
+                  @enderror
             </div>
             <div class="form-group col-md-4">
               <input type="text" name="email" class="form-control" placeholder="Email" id="email" value=""
-                aria-required="true">
+                aria-required="true" required>
+                @error('email')
+                  <span class="invalid-feedback d-block" role="alert">
+                    <strong>{{$message}}</strong>
+                  </span> 
+                @enderror
             </div>
             <div class="form-group col-md-4">
               <input type="text" name="phone" class="form-control" placeholder="Telefono" id="phone" value=""
@@ -56,16 +73,20 @@
 
           <div class="form-group">
             <textarea rows="8" id="comment" class="form-control" placeholder="Mensaje" name="comment"
-              aria-required="true"></textarea>
+              aria-required="true" required></textarea>
           </div>
+            @error('comment')
+              <span class="invalid-feedback d-block" role="alert">
+                <strong>{{$message}}</strong>
+              </span> 
+            @enderror
           <div class="form-submit text-center">
-            <input name="submit" type="submit" id="submit" class="btn btn-primary" value="Enviar">
-            <input type="hidden" name="comment_post_ID" value="" id="comment_post_ID">
-            <input type="hidden" name="comment_parent" id="comment_parent" value="">
+            <input type="submit" id="submit" class="btn btn-primary" value="Enviar">
           </div>
         </form>
       </div>
-
+      <!-- End form contact ====
+            ======================================= -->
     </div>
     <!-- /container -->
   </div>

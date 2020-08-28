@@ -43,3 +43,22 @@ $cyan: #6cb2eb;
   align-items: center;
   justify-content: center;
 }
+
+
+.card-header  {
+  background-color: #fff !important;
+}
+
+.descripcion_corta {
+  max-width: 350px;
+}
+
+.preview_igamen_banner {
+  width: 240px;
+  height: 250px;
+  margin: 0px auto;
+  border-radius: 5px black;
+  background-color: rgb(238, 238, 238);
+  align-items: center;
+  justify-content: center;
+}

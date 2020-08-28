@@ -298,8 +298,6 @@ $(document).ready(function() {
      dots: false,
      focusOnSelect: true
    });
-
-
 });
 
 

@@ -21,8 +21,9 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 Vue.use(VueSweetalert2);
-Vue.config.ignoredElements = ['trix-editor', 'trix-toolbar'];
 Vue.component('eliminar-producto', require('./components/EliminarProducto.vue').default);
+Vue.component('eliminar-banner', require('./components/EliminarBanner.vue').default);
+Vue.component('eliminar-banner-oferta', require('./components/EliminarBannerOferta.vue').default);
 Vue.component('producto-destacado', require('./components/ProductoDestacado.vue').default);
 
 /**

@@ -2,27 +2,23 @@
 
 @section('content')
 
-<div class="row m-0  mt-1">
+<div class="row m-0  mt-0">
   <div class="col-2 p-0">
         @include('layouts.sidebar')
   </div>
 
   <div class="col-10">
 
-    <div class="container">
-
-      <div class="card mt-3 shadow-sm">
+    <div>
+      <div class="card">
         <h5 class="card-header">
           <div class="row">
           <div class="col text-uppercase">Galeria {{$producto->nombre}}</div>
-            <div class="col text-right">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Agregar imagen</button>
-            </div>
           </div>
         </h5>
-        <div class="card-body  ">
-          <div class="row mt-5 ">
-            <div class="col-8 ">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-8 overflow-auto">
               <div class="d-flex justify-content-around flex-wrap">
                 @foreach ( $producto->galeria as $galeria )
                 <div class="card m-1 border-0" style="width: 10rem;">
@@ -38,8 +34,8 @@
                 @endforeach
               </div>
             </div>
-            <div class="col-4">
-              <form  action="{{route('galeria.store')}}" method="POST" enctype="multipart/form-data">
+            <div class="col-4 border-left">
+              <form  action="{{route('galeria.store')}}" method="POST" enctype="multipart/form-data" class="p-1">
                 @csrf
                     
                 <div class="row justify-content-center">
@@ -71,7 +67,7 @@
 
                 </div>
                 <div class="row mt-3">
-                  <button type="submit" class="btn btn-primary  shadow-sm">Guardar</button>
+                  <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-plus"></i> Agregar Imagen</button>
                 </div>
               </form>
             </div>
@@ -88,7 +84,7 @@
 
 
 
-@section('scripts')
+@push('scripts')
 <script type="text/javascript">
  window.addEventListener("load", function(){
   document.getElementById("file").onchange = function(e) {
@@ -125,4 +121,4 @@
   }
 });
 </script>
-@endsection
+@endpush

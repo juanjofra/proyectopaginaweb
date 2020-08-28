@@ -27,7 +27,7 @@
               @foreach ($productos as $producto)
               <tr class="text-center">
                 <td>{{$producto->nombre}}</td>
-                <td>{{$producto->descripcion_corta}}</td>
+                <td class="descripcion_corta">{{$producto->descripcion_corta}}</td>
                 <td>{{$producto->categoria->nombre}}</td>
                 <td>{{$producto->precio_venta}}</td>
                 <td>{{$producto->oferta}}</td>

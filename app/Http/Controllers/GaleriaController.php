@@ -13,6 +13,7 @@ class GaleriaController extends Controller
 
     public function __construct()
     {
+        $this->middleware('autorizacion');
         $this->middleware('auth');
     }
     
@@ -104,7 +105,7 @@ class GaleriaController extends Controller
      */
     public function destroy(Galeria $galeria)
     {
-       //Eliminamos la imagen antes de guardar el nuevo editado
+       //Eliminamos la imagen
         $full_path = public_path(). '/imagenes/galeria/'. $galeria->imagen;
         File::delete($full_path);
         $galeria->delete();

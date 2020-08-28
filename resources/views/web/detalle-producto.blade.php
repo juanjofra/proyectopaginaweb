@@ -1,7 +1,9 @@
 @extends('layouts.web')
 
 @section('content')
-    
+@php
+$configuracion = DB::table('configuracions')->where('id',  1)->first();
+@endphp
 <div class="main-content mt-5">
   <!-- =====================================
       ==== Start single-product -->
@@ -19,9 +21,9 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-lg-6 col-md-12">
-              <div class="main_image_product style_v2">
-                <div class="slider slider-for">
+            <div class="col-lg-5 col-md-12">
+              <div class="contenedor_imagen_grande">
+                <div class="slider slider-for" id="divImagenPrincipal">
                   @foreach ($producto->galeria as $galeria)
 
                   <div><img src='{{"/imagenes/galeria/$galeria->imagen"}}' alt=""></div>
@@ -36,23 +38,21 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 col-md-12">
+            <div class="col-lg-7 col-md-12">
               <div class="product-caption clearfix">
                 <p>{{$producto->descripcion_corta}}:</p>
-
-
                 <div class="product-price">
                   @if (($producto->precio_venta) > 0 && ($producto->oferta) == 0)
                   <ins>
-                    <span class="amout">Gs {{$producto->precio_venta}}</span>
+                    <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{$producto->precio_venta}}</span>
                   </ins>    
                   @endif
                   @if ($producto->oferta > 0)
                   <ins>
-                    <span class="amout">Gs {{$producto->oferta}}</span>
+                    <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{$producto->oferta}}</span>
                   </ins>
                   <del>
-                    <span class="amout">Gs {{$producto->precio_venta}}</span>
+                    <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{$producto->precio_venta}}</span>
                   </del>
                   @endif
                 </div><!-- /.product-price -->
@@ -98,3 +98,4 @@
 </div>
 
 @endsection
+

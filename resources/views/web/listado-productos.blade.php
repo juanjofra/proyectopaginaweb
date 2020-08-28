@@ -43,19 +43,19 @@
                 <div class="product-form-cart">
                   <div class="product-price">
                     @if (($producto->precio_venta) > 0 && ($producto->oferta) == 0)
-                      <ins>
-                        <span class="amout">Gs {{$producto->precio_venta}}</span>
-                      </ins>    
+                    <ins>
+                      <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{$producto->precio_venta}}</span>
+                    </ins>    
                     @endif
                     @if ($producto->oferta > 0)
                     <ins>
-                      <span class="amout">Gs {{$producto->oferta}}</span>
+                      <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{$producto->oferta}}</span>
                     </ins>
                     <del>
-                      <span class="amout">Gs {{$producto->precio_venta}}</span>
+                      <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{$producto->precio_venta}}</span>
                     </del>
                     @endif
-                  </div>
+                  </div><!-- /.product-price -->
                 </div>
               </div>
             </div>
@@ -89,19 +89,19 @@
                     </h4>
                     <div class="product-price">
                       @if (($producto->precio_venta) > 0 && ($producto->oferta) == 0)
-                        <ins>
-                          <span class="amout">Gs {{$producto->precio_venta}}</span>
-                        </ins>    
+                      <ins>
+                        <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{$producto->precio_venta}}</span>
+                      </ins>    
                       @endif
                       @if ($producto->oferta > 0)
                       <ins>
-                        <span class="amout">Gs {{$producto->oferta}}</span>
+                        <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{$producto->oferta}}</span>
                       </ins>
                       <del>
-                        <span class="amout">Gs {{$producto->precio_venta}}</span>
+                        <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{$producto->precio_venta}}</span>
                       </del>
                       @endif
-                    </div>
+                    </div><!-- /.product-price -->
                   </div>
                   <div class="excerpt">
                     {{$producto->descripcion_corta}}

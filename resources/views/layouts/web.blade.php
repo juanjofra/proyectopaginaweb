@@ -1,3 +1,11 @@
+@php
+$configuracion = DB::table('configuracions')->where('id',  1)->first();
+$correo_contacto = $configuracion->correo_contacto;
+$pattern = '/[a-z0-9_\-\+\.]+@[a-z0-9\-]+\.([a-z]{2,4})(?:\.[a-z]{2})?/i';
+$correos = [];
+preg_match_all($pattern, $correo_contacto, $correos);
+@endphp
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -43,7 +51,8 @@
 		<header class="header drank ">
 
 			<div class="header_container" style="background:#111111">
-
+			
+		
 				<!-- header-desktop -->
 				<div class="header-menu  header-desktop">
 					<div class="container">
@@ -64,7 +73,7 @@
 											<div class="features_icon__description">
 												<h4>PEDIDOS AL</h4>
 												<div>
-													0981-123456
+													{{$configuracion->telefono_contacto}}
 												</div>
 											</div>
 										</div>
@@ -72,10 +81,10 @@
 											<div class="features_icon__images">
 												<img src="{{asset('assets/images/icon_2.png')}}" alt="">
 											</div>
-											<div class="features_icon__description">
+											<div class="features_icon__description flex">
 												<h4>CORREO</h4>
 												<div>
-													info@example.com
+													<span>{{$correos[0][0]}}</span>
 												</div>
 											</div>
 										</div>
@@ -103,15 +112,16 @@
 										</div>
 										<div class="header-right col-md-2">
 											<ul class="social">
+												@if($configuracion->enlace_facebook)
 												<li>
-													<a href="#"><i class="fa fa-facebook"></i></a>
+													<a href="{{$configuracion->enlace_facebook}}" target="_blank"><i class="fa fa-facebook"></i></a>
 												</li>
+												@endif
+												@if ($configuracion->enlace_twitter)
 												<li>
-													<a href="#"><i class="fa fa-twitter"></i></a>
+													<a href="{{$configuracion->enlace_twitter}}"><i class="fa fa-twitter" ></i></a>
 												</li>
-												<li>
-													<a href="#"><i class="fa fa-google"></i></a>
-												</li>
+												@endif
 											</ul>
 										</div>
 									</div>
@@ -166,16 +176,16 @@
 
 		<!-- =====================================
 	    	==== Start footer -->
-		<footer class="site-footer clearfix">
+		<footer class="site-footer clearfix mt-4">
 			<!-- =====================================
 						==== Start contactform  -->
-			<div class="newsletter_form clearfix">
+			{{-- <div class="newsletter_form clearfix">
 				<div class="container">
 					<div class=" row newsletter">
 
 					</div>
 				</div>
-			</div>
+			</div> --}}
 			<!-- =====================================
 						==== End contactform  -->
 
@@ -189,31 +199,45 @@
 										<img src="{{asset('assets/images/logo.png')}}" alt="">
 									</a>
 								</div>
-								<div class="footer__info">
-									<p><i class="fa fa-map-marker" aria-hidden="true"></i>Direccion del local</p>
+								{{-- <div class="footer__info">
+									<p><i class="fa fa-map-marker" aria-hidden="true"></i>{{$configuracion->direccion_tienda}}</p>
 									<p>
-										<span><i class="fa fa-mobile" aria-hidden="true"></i>0981 123456</span>
-										<span><i class="fa fa-fax" aria-hidden="true"></i>021 123456</span>
+										<span><i class="fa fa-mobile" aria-hidden="true"></i>{{$configuracion->telefono_contacto}}</span>
 									</p>
 									<p>
-										<span><i class="fa fa-envelope"></i><a href="mailto:info@example.com">info@example.com</a></span>
-										<span><i class="fa fa-clock-o" aria-hidden="true"></i>Lun-Dom: 9AM-6PM</span>
+										<span><i class="fa fa-envelope"></i><a href="mailto:info@example.com">{{$configuracion->correo_contacto}}</a></span>
+										<span><i class="fa fa-clock-o" aria-hidden="true"></i>{{$configuracion->horario_atencion}}</span>
 									</p>
-								</div>
+								</div> --}}
 							</aside>
 						</div>
-						<div class="col-md-3"></div>
-						<div class="col-md-4 footer-block">
-							<aside class="widget-menu-item">
-								<h3 class="widget-title">Accesos Rapidos</h3>
-								<ul class="columns-2">
-									<li><a href="{{route('web.index')}}">Inicio</a></li>
-									<li><a href="{{route('web.productos')}}">Productos</a></li>
-									<li><a href="{{route('web.nosotros')}}">Nosotros</a></li>
-									<li><a href="{{route('web.contacto')}}">Contacto</a></li>
-									<li><a href="#"> Politica de Delivery</a></li>
-								</ul>
-							</aside>
+						<div class="col-md-7 footer-block ">
+							<div class="row foot_acceso_rapido">
+								<aside class="widget-menu-item">
+									<h3 class="widget-title">Accesos Rapidos</h3>
+									<ul class="columns-2">
+										<li><a href="{{route('web.index')}}">Inicio</a></li>
+										<li><a href="{{route('web.productos')}}">Productos</a></li>
+										<li><a href="{{route('web.nosotros')}}">Nosotros</a></li>
+										<li><a href="{{route('web.contacto')}}">Contacto</a></li>
+										<li><a href="#"> Politica de Delivery</a></li>
+									</ul>
+								</aside>
+							</div>
+							<div class="row foot_informacion_direcciones">
+								<div class="footer__info">
+									<p><i class="fa fa-map-marker" aria-hidden="true"></i>{{$configuracion->direccion_tienda}}</p>
+									<p>
+										<span><i class="fa fa-mobile" aria-hidden="true"></i>{{$configuracion->telefono_contacto}}</span>
+									</p>
+									<p>
+										<span><i class="fa fa-envelope"></i><a href="mailto:info@example.com">{{$configuracion->correo_contacto}}</a></span>
+										<span><i class="fa fa-clock-o" aria-hidden="true"></i>{{$configuracion->horario_atencion}}</span>
+									</p>
+								</div>
+							</div>
+							
+							
 						</div>
 
 					</div>
@@ -224,7 +248,7 @@
 					<div class="row">
 						<div class="col-md-12  d-flex justify-content-between align-items-center">
 							<div class="copyright">
-								Copyright © 2020 <a href="#"></a>. Todos los derechos reservados
+								Copyright © 2020. Todos los derechos reservados
 							</div>
 						</div>
 					</div>
@@ -274,7 +298,7 @@
 	<script src="{{asset('assets/js/custom.js')}}"></script>
 	<!-- =====================================
     	==== End all js herej -->
-
+			@stack('scripts')
 </body>
 
 </html>

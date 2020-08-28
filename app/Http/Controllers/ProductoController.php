@@ -32,7 +32,7 @@ class ProductoController extends Controller
     
     public function store(Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
         $validatedData = $request->validate([
             'select_categoria' => 'required',
             'nombre' => 'required|min:2',
@@ -156,4 +156,5 @@ class ProductoController extends Controller
 
         return;
     }
+
 }

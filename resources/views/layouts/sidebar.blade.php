@@ -3,4 +3,5 @@
   <a href="{{ route('categoria.index') }}" class="list-group-item list-group-item-action {{ request()->is('categoria') ? 'active' : '' }}">Categorias</a>
   <a href="{{ route('producto.index') }}" class="list-group-item list-group-item-action {{ request()->is('producto') ? 'active' : '' }}">Productos</a>
   <a href="{{ route('user.index') }}" class="list-group-item list-group-item-action">Usuarios</a>
+  <a href="{{ route('configuracion.index') }}" class="list-group-item list-group-item-action">Condiguracion</a>
 </div>

@@ -25,6 +25,24 @@
   justify-content: center;
 }
 
+.card-header {
+  background-color: #fff !important;
+}
+
+.descripcion_corta {
+  max-width: 350px;
+}
+
+.preview_igamen_banner {
+  width: 240px;
+  height: 250px;
+  margin: 0px auto;
+  border-radius: 5px black;
+  background-color: #eeeeee;
+  align-items: center;
+  justify-content: center;
+}
+
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -10952,4 +10970,3 @@ a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
-

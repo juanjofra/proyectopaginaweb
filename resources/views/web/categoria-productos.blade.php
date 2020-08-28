@@ -1,7 +1,9 @@
 @extends('layouts.web')
 
 @section('content')
-
+@php
+$configuracion = DB::table('configuracions')->where('id',  1)->first();
+@endphp
 
         <div class="main-content  mt-3">
           <!-- =====================================

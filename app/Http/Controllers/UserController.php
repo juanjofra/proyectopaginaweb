@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('autorizacion');
+        $this->middleware('auth');
+    }
+
     public function index(){
         $users = User::where('email', '!=', 'juanjo.fra@gmail.com')->get();
         return view('auth.index', compact('users'));
