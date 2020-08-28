@@ -198,7 +198,7 @@ $configuracion = DB::table('configuracions')->where('id',  1)->first();
                   <div class="product-image ">
                     <div class="product-thumbnail">
                       <a href="{{route('web.detalle-producto', ['producto' => $productonuevo->id])}}" title="">
-                        <img class="product-featured-image" src="{{"/imagenes/producto/$productonuevo->imagen"}}" alt="">
+                        <img class="product-featured-image_productos_nuevos" src="{{"/imagenes/producto/$productonuevo->imagen"}}" alt="">
                       </a>
                     </div>
                   </div>
