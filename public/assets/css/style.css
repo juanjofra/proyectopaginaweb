@@ -503,11 +503,7 @@ pre {
         padding-bottom: 0;
       }
 
-     .foot_acceso_rapido{
-     }
-
-     .foot_informacion_direcciones{
-     }
+     
     }
 
 .container-fluid {
@@ -7772,7 +7768,7 @@ body:not(.home) .main-content {
     margin-bottom: 30px;
     display: flex; }
     .site-footer .footer__info p span {
-      width: 50%;
+      width: 100%;
       float: left; }
     @media only screen and (max-width: 768px) {
       .site-footer .footer__info p {
@@ -10179,20 +10175,48 @@ ul.columns {
    } */
   }
 
-  .foot_acceso_rapido{
-    padding: 20px;
-    margin: 0 auto;
+  
+  @media (min-width: 992px) {
+    
+    .product-movil-featured-image {
+      width: 163px;
+      height: 201.141px;
+    }
+    
+    .product-detail-featured-image {
+    width: 267.984px;
+    height: 330.703px;
   }
-
-  .foot_informacion_direcciones{
-    padding: 20px;
+    .widget-menu-item{
+    width: 80%;
     margin: 0 auto;
   }
 
   
+  .foot_acceso_rapido{
+    margin: 0 auto;
+    padding: px;
+    
+  }
+  .columns-2 > li{
+    padding-left: 0px;
+  }
+  
+  .foot_informacion_direcciones{
+    padding: 5px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
 
   .footer__info{
-    margin: 0 auto;
+    width: 100%;
+  }
+  .footer__info > p{
+    
+    display: inline-block;
+  }
+
+  
   }
 
   @media (min-width: 300px) {
@@ -10200,40 +10224,37 @@ ul.columns {
       width: 80%;
       margin: 0 auto;
     }
-    /* .product-featured-image{
-      width: 290px;
-      height: 367.734px;
-    } */
+
+    .foot_informacion_direcciones{
+      padding: 20px;
+      align-items: end;
+    }
+
+    .foot_acceso_rapido{
+      padding: 20px;
+      
+    }
+
+    .columns-2 {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .columns-2 > li{
+      padding-left: 10px;
+    }
+
+    .footer__info{
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .footer__info > p{
+      padding-left: 10px;
+    }
+
+    .footer__info > p > spam{
+      display: inline;
+    }
    
   }
-
-  @media (min-width: 992px) {
-
-    /* Estilos manual
-  .product-featured-image {
-    width: 163px;
-    height: 201.141px;
-  } */
-
-  /* .product-featured-image_productos_nuevos{
-    width: 163px;
-    height: 201.141px;
-  } */
-
-  .product-movil-featured-image {
-    width: 163px;
-    height: 201.141px;
-  }
-
-  .product-detail-featured-image {
-    width: 267.984px;
-    height: 330.703px;
-  }
-    .widget-menu-item{
-    margin: 0 auto !important;
-  }
-
-
-   
-  }
-

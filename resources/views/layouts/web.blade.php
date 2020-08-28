@@ -4,6 +4,7 @@ $correo_contacto = $configuracion->correo_contacto;
 $pattern = '/[a-z0-9_\-\+\.]+@[a-z0-9\-]+\.([a-z]{2,4})(?:\.[a-z]{2})?/i';
 $correos = [];
 preg_match_all($pattern, $correo_contacto, $correos);
+
 @endphp
 
 <!DOCTYPE html>
@@ -45,7 +46,8 @@ preg_match_all($pattern, $correo_contacto, $correos);
 
 <body class="home layout-boxed section-bg" >
 	<div class="site-wrapper">
-
+		
+		
 		<!-- =====================================
 		==== Start header -->
 		<header class="header drank ">
@@ -192,7 +194,7 @@ preg_match_all($pattern, $correo_contacto, $correos);
 			<div class="site-footer__main">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-5 footer-block">
+						<div class="col-md-3 footer-block">
 							<aside class="widget-text">
 								<div class="footer__logo">
 									<a href="{{route('web.index')}}">
@@ -211,35 +213,42 @@ preg_match_all($pattern, $correo_contacto, $correos);
 								</div> --}}
 							</aside>
 						</div>
-						<div class="col-md-7 footer-block ">
-							<div class="row foot_acceso_rapido">
-								<aside class="widget-menu-item">
-									<h3 class="widget-title">Accesos Rapidos</h3>
-									<ul class="columns-2">
-										<li><a href="{{route('web.index')}}">Inicio</a></li>
-										<li><a href="{{route('web.productos')}}">Productos</a></li>
-										<li><a href="{{route('web.nosotros')}}">Nosotros</a></li>
-										<li><a href="{{route('web.contacto')}}">Contacto</a></li>
-										<li><a href="#"> Politica de Delivery</a></li>
-									</ul>
-								</aside>
-							</div>
-							<div class="row foot_informacion_direcciones">
-								<div class="footer__info">
-									<p><i class="fa fa-map-marker" aria-hidden="true"></i>{{$configuracion->direccion_tienda}}</p>
-									<p>
-										<span><i class="fa fa-mobile" aria-hidden="true"></i>{{$configuracion->telefono_contacto}}</span>
-									</p>
-									<p>
-										<span><i class="fa fa-envelope"></i><a href="mailto:info@example.com">{{$configuracion->correo_contacto}}</a></span>
-										<span><i class="fa fa-clock-o" aria-hidden="true"></i>{{$configuracion->horario_atencion}}</span>
-									</p>
+						<div class="col-md-9 footer-block ">
+							<div class="row">
+								<div class="col-md-6 foot_acceso_rapido">
+									<aside class="widget-menu-item">
+										<h3 class="widget-title">Accesos Rapidos</h3>
+										<ul class="columns-2">
+											<li><a href="{{route('web.index')}}">Inicio</a></li>
+											<li><a href="{{route('web.productos')}}">Productos</a></li>
+											<li><a href="{{route('web.nosotros')}}">Nosotros</a></li>
+											<li><a href="{{route('web.contacto')}}">Contacto</a></li>
+											<li><a href="#"> Politica de Delivery</a></li>
+										</ul>
+									</aside>
+								</div>
+								<div class="col-md-6 foot_informacion_direcciones">
+									<div class="footer__info">
+										<p><span><i class="fa fa-map-marker" aria-hidden="true"></i>{{$configuracion->direccion_tienda}}</span></p>
+										<p>
+											<span><i class="fa fa-mobile" aria-hidden="true"></i>{{$configuracion->telefono_contacto}}</span>
+										</p>
+										<p>
+											<span><i class="fa fa-clock-o" aria-hidden="true"></i>{{$configuracion->horario_atencion}}</span>
+										</p>
+										<p>
+											<span style="
+											width: 100%;"><i class="fa fa-envelope"></i>
+											@foreach ($correos[0] as $key => $correo)		
+											<a href="mailto:{{$correo}}">{{$correo}} @if(count($correos[0]) > 1 && count($correos[0]) > ($key+1)) / @endif</a>
+
+											@endforeach
+											</span>
+										</p>
+									</div>
 								</div>
 							</div>
-							
-							
 						</div>
-
 					</div>
 				</div>
 			</div>
