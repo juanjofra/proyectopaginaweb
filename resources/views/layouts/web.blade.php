@@ -126,7 +126,7 @@ preg_match_all($pattern, $correo_contacto, $correos);
 												@endif
 												@if ($configuracion->enlace_instagram)
 												<li>
-													<a href="{{$configuracion->enlace_twitter}}"><i class="fab fa-instagram"></i></a>
+													<a href="{{$configuracion->enlace_instagram}}" class="w-5"><i class="fab fa-instagram "></i></a>
 												</li>
 												@endif
 											</ul>
@@ -287,6 +287,8 @@ preg_match_all($pattern, $correo_contacto, $correos);
 
 	<!-- bootstrap js-->
 	<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+
+	<script src="https://kit.fontawesome.com/da8e6b6767.js" crossorigin="anonymous"></script>
 
 	<!-- slick js-->
 	<script src="{{asset('assets/js/slick.min.js')}}"></script>
