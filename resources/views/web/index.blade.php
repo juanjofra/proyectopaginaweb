@@ -119,19 +119,19 @@ $configuracion = DB::table('configuracions')->where('id',  1)->first();
                       <div class="product-form-cart">
                         <div class="product-price">
                           @if (($productoDestacado->precio_venta) > 0 && ($productoDestacado->oferta) == 0)
-                            <ins>
-                              <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{$productoDestacado->precio_venta}}</span>
-                            </ins>    
+                          <ins>
+                            <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{ number_format($productoDestacado->precio_venta, 0, ',', '.') }}</span>
+                          </ins>    
                           @endif
                           @if ($productoDestacado->oferta > 0)
                           <ins>
-                            <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{$productoDestacado->oferta}}</span>
+                            <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{ number_format($productoDestacado->oferta, 0, ',', '.') }}</span>
                           </ins>
                           <del>
-                            <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{$productoDestacado->precio_venta}}</span>
+                            <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{ number_format($productoDestacado->precio_venta, 0, ',', '.') }}</span>
                           </del>
                           @endif
-                        </div>
+                        </div><!-- /.product-price -->
                     </div>
                   </div>
                 </li>
@@ -209,20 +209,17 @@ $configuracion = DB::table('configuracions')->where('id',  1)->first();
                     </h4>
                     <div class="product-form-cart">
                       <div class="product-price">
-                        
                         @if (($productonuevo->precio_venta) > 0 && ($productonuevo->oferta) == 0)
                         <ins>
-                          <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif 
-                            {{$productonuevo->precio_venta}}
-                          </span>
+                          <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{ number_format($productonuevo->precio_venta, 0, ',', '.') }}</span>
                         </ins>    
                         @endif
                         @if ($productonuevo->oferta > 0)
                         <ins>
-                          <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{$productonuevo->oferta}}</span>
+                          <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{ number_format($productonuevo->oferta, 0, ',', '.') }}</span>
                         </ins>
                         <del>
-                          <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{$productonuevo->precio_venta}}</span>
+                          <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{ number_format($productonuevo->precio_venta, 0, ',', '.') }}</span>
                         </del>
                         @endif
                       </div><!-- /.product-price -->
@@ -269,15 +266,15 @@ $configuracion = DB::table('configuracions')->where('id',  1)->first();
                             <div class="product-price">
                               @if (($producto->precio_venta) > 0 && ($producto->oferta) == 0)
                               <ins>
-                                <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{$producto->precio_venta}}</span>
+                                <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{ number_format($producto->precio_venta, 0, ',', '.') }}</span>
                               </ins>    
                               @endif
                               @if ($producto->oferta > 0)
                               <ins>
-                                <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{$producto->oferta}}</span>
+                                <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{ number_format($producto->oferta, 0, ',', '.') }}</span>
                               </ins>
                               <del>
-                                <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{$producto->precio_venta}}</span>
+                                <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{ number_format($producto->precio_venta, 0, ',', '.') }}</span>
                               </del>
                               @endif
                             </div><!-- /.product-price -->

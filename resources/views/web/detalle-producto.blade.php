@@ -3,6 +3,7 @@
 @section('content')
 @php
 $configuracion = DB::table('configuracions')->where('id',  1)->first();
+setlocale(LC_MONETARY,"es_ES");
 @endphp
 <div class="main-content mt-5">
   <!-- =====================================
@@ -44,15 +45,15 @@ $configuracion = DB::table('configuracions')->where('id',  1)->first();
                 <div class="product-price">
                   @if (($producto->precio_venta) > 0 && ($producto->oferta) == 0)
                   <ins>
-                    <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{$producto->precio_venta}}</span>
+                    <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{ number_format($producto->precio_venta, 0, ',', '.') }}</span>
                   </ins>    
                   @endif
                   @if ($producto->oferta > 0)
                   <ins>
-                    <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{$producto->oferta}}</span>
+                    <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{ number_format($producto->oferta, 0, ',', '.') }}</span>
                   </ins>
                   <del>
-                    <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{$producto->precio_venta}}</span>
+                    <span class="amout">@if($configuracion->tipo_moneda === 'Guaranies')Gs @else $ @endif {{ number_format($producto->precio_venta, 0, ',', '.') }}</span>
                   </del>
                   @endif
                 </div><!-- /.product-price -->
