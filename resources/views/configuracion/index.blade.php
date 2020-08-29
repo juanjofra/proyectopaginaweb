@@ -6,7 +6,7 @@
 		@include('layouts.sidebar')
   </div>
 
-	<div class="col-10">
+	<div class="col-10 mt-2">
 		<div class="header">
 			<h1 class="header-title">
 					<i class="fas fa-cog"></i> Configuraciones
@@ -73,6 +73,20 @@
 																			@enderror
 																	</div>
 															</div>
+															<div class="col-lg-12 form-group">
+																<label><b>Enlace de Instagram</b></label>
+																<div class="input-group mb-2 mr-sm-2">
+																		<div class="input-group-prepend">
+																				<div class="input-group-text" style="background: #eb775a;color: white;border: none;padding: 0 14px;"><i class="fab fa-instagram"></i></div>
+																		</div>
+																		<input type="text" class="form-control" name="enlace_instagram" placeholder="Enlace de instagram" value="{{old('enlace_instagram', $configuracion->enlace_instagram)}}">
+																		@error('enlace_instagram')
+																			<span class="invalid-feedback d-block" role="alert">
+																				<strong>{{$message}}</strong>
+																			</span> 
+																		@enderror
+																</div>
+														</div>
 													</div>
 											</div>
 									</div>

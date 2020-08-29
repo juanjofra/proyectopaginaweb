@@ -7,7 +7,7 @@
 
   <div class="container">
     <div class="card mt-4 shadow-sm">
-      <h5 class="card-header">Nuevo Producto</h5>
+      <h5 class="card-header">Editar Producto</h5>
       <div class="card-body">
         <div class="row justify-content-center">
           <div class="col-10 ">
@@ -109,6 +109,7 @@
                 <div class="row">
                   <div class="col">
                     <div class="form-group">
+                      <label for="exampleInputEmail1">Detalle del producto:</label>
                     <textarea class="form-control editor" name="detalle_producto" id="detalle_producto" cols="30" rows="10">{{old('detalle_producto', $producto->detalle_producto)}}</textarea>
                     </div>
                   </div>
@@ -117,7 +118,7 @@
                 <div class="from-group text-center mt-5">
                   <div class="row">
                     <div class="col">
-                      <button type="submit" class="btn btn-primary btn-block shadow-sm">Editar</button>
+                      <button type="submit" class="btn btn-primary btn-block shadow-sm">Guardar</button>
                     </div>
                     <div class="col">
                       <a href="{{ route('producto.index')}}" class="btn btn-danger btn-block shadow-sm">Cancelar</a>

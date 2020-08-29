@@ -20,6 +20,7 @@ class Configuracion extends Seeder
             'horario_atencion' => '',
             'enlace_facebook' => '',
             'enlace_twitter' => '',
+            'enlace_instragam' => '',
             'nosotros' => '',
             'mensaje_delivery' => '',
             'tipo_moneda' => 'Guaranies',

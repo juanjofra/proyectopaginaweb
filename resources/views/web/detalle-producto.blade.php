@@ -83,8 +83,9 @@ $configuracion = DB::table('configuracions')->where('id',  1)->first();
               <div id="tab_description" class="tab-pane fade show active">
                 {!!$producto->descripcion!!}
               </div>
-              <div id="tab_information" class="tab-pane fade">
-                {!!$producto->detalle_producto!!}
+              <div id="tab_information" class="tab-pane fade tab_information">
+                {!! $producto->detalle_producto !!}
+                
               </div>
             </div>
           </div>

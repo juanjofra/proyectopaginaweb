@@ -24,6 +24,7 @@ class CreateConfiguracionsTable extends Migration
             $table->string('mensaje_delivery')->nullable();
             $table->string('enlace_facebook')->nullable();
             $table->string('enlace_twitter')->nullable();
+            $table->string('enlace_instagram')->nullable();
             $table->string('tipo_moneda')->nullable();
             $table->string('banner_1')->nullable();
             $table->string('banner_2')->nullable();

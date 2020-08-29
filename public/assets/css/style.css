@@ -10258,3 +10258,7 @@ ul.columns {
     }
    
   }
+
+  .tab_information > ul > li{
+    list-style-type: disc !important;
+  }

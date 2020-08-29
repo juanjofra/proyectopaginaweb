@@ -17,7 +17,7 @@ preg_match_all($pattern, $correo_contacto, $correos);
 	<meta name="description" content="">
 	<meta name="robots" content="noindex, follow" />
 
-	<title>Games</title>
+	<title>{{$configuracion->nombre_tienda}}</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/favicon.ico')}}">
@@ -61,7 +61,7 @@ preg_match_all($pattern, $correo_contacto, $correos);
 						<div class="row">
 							<div class="col-md-2 d-flex align-items-center justify-content-center">
 							<a class="logo" href="{{route('web.index')}}">
-									<img src="{{asset('assets/images/logo.png')}}" alt="">
+									<img src="{{asset('assets/images/logo.png')}}" alt="Logo">
 								</a>
 							</div>
 							<div class="col-md-10 header-menu-main">
@@ -70,7 +70,7 @@ preg_match_all($pattern, $correo_contacto, $correos);
 									<div class="site-header__icon  d-flex justify-content-end align-items-center">
 										<div class="features_icon">
 											<div class="features_icon__images">
-												<img src="{{asset('assets/images/icon_1.png')}}" id="prueba" alt="">
+												<img src="{{asset('assets/images/icon_1.png')}}" id="prueba" alt="Contacto">
 											</div>
 											<div class="features_icon__description">
 												<h4>PEDIDOS AL</h4>
@@ -81,7 +81,7 @@ preg_match_all($pattern, $correo_contacto, $correos);
 										</div>
 										<div class="features_icon">
 											<div class="features_icon__images">
-												<img src="{{asset('assets/images/icon_2.png')}}" alt="">
+												<img src="{{asset('assets/images/icon_2.png')}}" alt="Correo">
 											</div>
 											<div class="features_icon__description flex">
 												<h4>CORREO</h4>
@@ -122,6 +122,11 @@ preg_match_all($pattern, $correo_contacto, $correos);
 												@if ($configuracion->enlace_twitter)
 												<li>
 													<a href="{{$configuracion->enlace_twitter}}"><i class="fa fa-twitter" ></i></a>
+												</li>
+												@endif
+												@if ($configuracion->enlace_instagram)
+												<li>
+													<a href="{{$configuracion->enlace_twitter}}"><i class="fab fa-instagram"></i></a>
 												</li>
 												@endif
 											</ul>

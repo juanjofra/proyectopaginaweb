@@ -34,6 +34,7 @@ class ConfiguracionController extends Controller
             'horario_atencion'=>'required|max:200',
             'enlace_facebook'=>'max:200',
             'enlace_twitter'=>'max:200',
+            'enlace_instagram'=>'max:200',
             'banner_1'=>'max:1000',
             'banner_2'=>'max:1000',
             'banner_3'=>'max:1000',
@@ -47,6 +48,7 @@ class ConfiguracionController extends Controller
         $configuracion->horario_atencion = $request->horario_atencion;
         $configuracion->enlace_facebook = $request->enlace_facebook;
         $configuracion->enlace_twitter = $request->enlace_twitter;
+        $configuracion->enlace_instagram = $request->enlace_instagram;
         $configuracion->nosotros = $request->nosotros;
         $configuracion->mensaje_delivery = $request->mensaje_delivery;
         $configuracion->producto_select_banner_1 = $request->producto_select_banner_1;

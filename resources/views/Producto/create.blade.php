@@ -37,7 +37,7 @@
           
                     <div class="form-group">
                       <label for="exampleFormControlTextarea1">Descripcion:</label>
-                      <textarea class="form-control" name="descripcion" id="descripcion" cols="10" rows="5"></textarea>
+                      <textarea class="form-control" name="descripcion" id="descripcion" cols="10" rows="5">{{old('descripcion')}}</textarea>
                       @error('descripcion')
                         <span class="invalid-feedback d-block" role="alert">
                           <strong>{{$message}}</strong>
@@ -109,7 +109,7 @@
                   <div class="col">
                     <div class="form-group">
                       <label for="exampleFormControlTextarea1">Detalle del producto:</label>
-                      <textarea class="form-control editor" name="detalle_producto" id="detalle_producto"></textarea>
+                      <textarea class="form-control editor" name="detalle_producto" id="detalle_producto">{{old('detalle_producto')}}</textarea>
                       @error('detalle_producto')
                         <span class="invalid-feedback d-block" role="alert">
                           <strong>{{$message}}</strong>
