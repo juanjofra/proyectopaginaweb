@@ -120,12 +120,12 @@ preg_match_all($pattern, $correo_contacto, $correos);
 												@endif
 												@if ($configuracion->enlace_twitter)
 												<li>
-													<a href="{{$configuracion->enlace_twitter}}"><i class="fa fa-twitter" ></i></a>
+													<a href="{{$configuracion->enlace_twitter}}" target="_blank"><i class="fa fa-twitter" ></i></a>
 												</li>
 												@endif
 												@if ($configuracion->enlace_instagram)
 												<li>
-													<a href="{{$configuracion->enlace_instagram}}" class="w-5"><i class="fab fa-instagram "></i></a>
+													<a href="{{$configuracion->enlace_instagram}}" class="w-5" target="_blank"><i class="fab fa-instagram "></i></a>
 												</li>
 												@endif
 											</ul>

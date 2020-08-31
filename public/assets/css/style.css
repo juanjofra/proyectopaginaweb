@@ -10262,3 +10262,15 @@ ul.columns {
   .tab_information > ul > li{
     list-style-type: disc !important;
   }
+
+  .fa{
+    font-size: 17px !important;
+  }
+
+  .fa-instagram{
+    font-size: 20px;
+  }
+
+  .fa-envelope{
+    font-size: 18px !important;
+  }
