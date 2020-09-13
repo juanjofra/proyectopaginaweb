@@ -21,37 +21,47 @@ class WebController extends Controller
         $categoriaDescatados = Categoria::where('destacado', 1)->get();
         $productosNuevos = Producto::orderBy('created_at', 'desc')->limit(4)->get();
         //dd($categoriaDescatados);
-        return view('web.index', compact('categoriaDescatados', 'productosDestacados', 'productosNuevos'));
+        // return view('web.index', compact('categoriaDescatados', 'productosDestacados', 'productosNuevos'));
+        return view('web.enconstruccion');
     }
 
     public function productos()
     {
         $productos = Producto::paginate(9);
         $categorias = Categoria::all();
-        return view('web.productos', compact('productos', 'categorias'));
+        //return view('web.productos', compact('productos', 'categorias'));
+        return redirect()->route('web.index');
     }
 
     public function categoriaProductos(Categoria $categoria)
     {
         $categorias = Categoria::all();
         $productos = Producto::where('categoria_id', '=', $categoria->id)->paginate(2);
-        return view('web.categoria-productos', compact('categorias', 'productos'));
+        //return view('web.categoria-productos', compact('categorias', 'productos'));
+        
+        return redirect()->route('web.index');
     }
 
     public function detalleProducto(Producto $producto)
     {
-        return view('web.detalle-producto', compact('producto'));
+       // return view('web.detalle-producto', compact('producto'));
+       
+       return redirect()->route('web.index');
     }
 
     public function nosotros()
     {
         $configuracion = Configuracion::all()->first();
-        return view('web.nosotros', compact('configuracion'));
+        //return view('web.nosotros', compact('configuracion'));
+        
+        return redirect()->route('web.index');
     }
 
     public function contacto()
     {
-        return view('web.contacto');
+       //return view('web.contacto');
+       
+       return redirect()->route('web.index');
     }
 
     public function formcontacto(Request $request){
@@ -66,7 +76,9 @@ class WebController extends Controller
         //dd($users);
         Mail::to($users)->send(new FormContacto($request->author, $request->email, $request->phone, $request->comment));
         
-        return back()->with('message', 'Mensaje enviado, gracias por contactar con nosotros!');
+        //return back()->with('message', 'Mensaje enviado, gracias por contactar con nosotros!');
+        
+        return redirect()->route('web.index');
     }
    
 }
