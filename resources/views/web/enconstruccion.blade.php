@@ -13,23 +13,27 @@ $configuracion = DB::table('configuracions')->where('id',  1)->first();
 
 	<title>{{$configuracion->nombre_tienda}}</title>
 
-<style>
-  body{
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    font-size: 0;
-    background-color: #17D7E6;
-  }
-  img{
-    width: 100%; 
-    height: 100%;
-  }
-</style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css" integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g==" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/construction.css">
+
 </head>
 
 <body>
-  <img src="assets/images/construccion.png" alt="">
+  <div class="container">
+    <section class="section-left">
+       <div class="contenedor">
+        <span><h1>PAGINA EN CONSTRUCCIÓN</h1></span>
+        <span><p>Estamos trabajando para brindarte lo mejor.</p></span>
+        <img src="assets/images/logo.png" alt="">
+       </div>
+    </section>
+
+    <section class="section-right">
+      <img src="assets/images/imageconstrution.png" alt="">
+    </section>
+  </div>
+
 </body>
 
 </html>
